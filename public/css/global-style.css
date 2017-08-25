@@ -1,0 +1,94 @@
+.space {
+    padding: 25px 0 !important
+}
+
+.bannertwo {
+    padding: 100px 0 !important;
+    position: relative !important;
+    z-index: 5 !important
+}
+
+.bannertwo .parallax-container {
+    position: absolute !important;
+    height: 100% !important;
+    top: 0 !important
+}
+
+.bannertwo .parallax-container:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(46, 49, 146, 0.46);
+    background: -moz-linear-gradient(45deg, rgba(46, 49, 146, 0.46) 0%, rgba(46, 49, 146, 0.61) 50%, rgba(46, 49, 146, 0.61) 51%, rgba(46, 49, 146, 0.38) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(46, 49, 146, 0.46)), color-stop(50%, rgba(46, 49, 146, 0.61)), color-stop(51%, rgba(46, 49, 146, 0.61)), color-stop(100%, rgba(46, 49, 146, 0.38)));
+    background: -webkit-linear-gradient(45deg, rgba(46, 49, 146, 0.46) 0%, rgba(46, 49, 146, 0.61) 50%, rgba(46, 49, 146, 0.61) 51%, rgba(46, 49, 146, 0.38) 100%);
+    background: -o-linear-gradient(45deg, rgba(46, 49, 146, 0.46) 0%, rgba(46, 49, 146, 0.61) 50%, rgba(46, 49, 146, 0.61) 51%, rgba(46, 49, 146, 0.38) 100%);
+    background: -ms-linear-gradient(45deg, rgba(46, 49, 146, 0.46) 0%, rgba(46, 49, 146, 0.61) 50%, rgba(46, 49, 146, 0.61) 51%, rgba(46, 49, 146, 0.38) 100%);
+    background: linear-gradient(45deg, rgba(46, 49, 146, 0.46) 0%, rgba(46, 49, 146, 0.61) 50%, rgba(46, 49, 146, 0.61) 51%, rgba(46, 49, 146, 0.38) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#2e3192', endColorstr='#2e3192', GradientType=1);
+    z-index: 0
+}
+
+.items-option {
+    padding: 50px 10px !important;
+    box-sizing: border-box;
+    font-weight: lighter;
+}
+
+.items-option svg,
+.items-option svg path {
+    width: 80px;
+    height: 80px;
+    fill: #F7931E !important;
+}
+
+.bannerthree {
+    width: 100%;
+    height: 300px;
+    background-image: url('../img/downhillbg.png');
+    background-size: 100%;
+    position: relative;
+    overflow: hidden;
+    background-repeat: no-repeat;
+}
+
+.point {
+    width: 20px;
+    height: 20px;
+    background-color: #DB9600;
+    border-radius: 50px;
+    display: inline-block;
+}
+
+.page-footer .divider {
+    background-color: #DB9600 !important
+}
+
+.icon-red svg {
+    width: 30px !important;
+    height: 30px !important;
+}
+
+.icon-red {
+    margin: 0 5px
+}
+
+
+/*@media (max-width: 600px) {
+    .container {
+        width: 98%
+    }
+}*/
+
+.routernav .breadcrumb:before {
+    color: #9e9e9e !important;
+}
+
+@media (max-width: 992px) {
+    .routernav .container {
+        width: 100% !important;
+    }
+}

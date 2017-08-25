@@ -1,0 +1,108 @@
+.bannerofertas {
+    width: 100%;
+    height: 350px;
+    position: relative;
+    display: block;
+    z-index: 5
+}
+
+.bannerofertas .container {
+    height: 100% !important;
+    position: relative;
+    z-index: 1;
+}
+
+.bannerofertas .container .valign {
+    width: 100% !important;
+}
+
+.bannerofertas .container .valign h2 {
+    font-size: 2.2rem !important
+}
+
+.bannerofertas .container .divider {
+    margin: 8px 0 !important;
+    height: 4px !important;
+    background: rgba(255, 175, 75, 0) !important;
+    background: -moz-linear-gradient(left, rgba(255, 175, 75, 0) 0%, rgba(255, 146, 10, 1) 42%, rgba(255, 146, 10, 0.96) 60%, rgba(255, 146, 10, 0) 100%) !important;
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255, 175, 75, 0)), color-stop(42%, rgba(255, 146, 10, 1)), color-stop(60%, rgba(255, 146, 10, 0.96)), color-stop(100%, rgba(255, 146, 10, 0))) !important;
+    background: -webkit-linear-gradient(left, rgba(255, 175, 75, 0) 0%, rgba(255, 146, 10, 1) 42%, rgba(255, 146, 10, 0.96) 60%, rgba(255, 146, 10, 0) 100%) !important;
+    background: -o-linear-gradient(left, rgba(255, 175, 75, 0) 0%, rgba(255, 146, 10, 1) 42%, rgba(255, 146, 10, 0.96) 60%, rgba(255, 146, 10, 0) 100%) !important;
+    background: -ms-linear-gradient(left, rgba(255, 175, 75, 0) 0%, rgba(255, 146, 10, 1) 42%, rgba(255, 146, 10, 0.96) 60%, rgba(255, 146, 10, 0) 100%) !important;
+    background: linear-gradient(to right, rgba(255, 175, 75, 0) 0%, rgba(255, 146, 10, 1) 42%, rgba(255, 146, 10, 0.96) 60%, rgba(255, 146, 10, 0) 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffaf4b', endColorstr='#ff920a', GradientType=1) !important;
+}
+
+.bannerofertas .parallax-container {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100% !important
+}
+
+.bannerofertas .parallax-container:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .8);
+    left: 0;
+    top: 0
+}
+
+.bannerofertas .parallax-container * {
+    width: 100% !important;
+}
+
+.cubeproduct{
+	width: 260px;
+	height: 250px;
+	overflow:hidden;
+	-webkit-clip-path: polygon(30% 0%, 100% 0, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0 100%, 0% 30%);
+	clip-path: polygon(30% 0%, 100% 0, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0 100%, 0% 30%);
+	display: inline-block;
+	position: relative;
+	padding: 6px 0 10px;
+}
+
+.contimg{
+	width: 265px;
+	height: 100%;
+	overflow:hidden;
+	display: inline-block;
+}
+
+.cubeproduct:after,
+.cubeproduct:before{
+	content: '';
+	position: absolute;
+	width: 150px;
+	height: 4px;
+	background: rgba(255, 175, 75, 0) !important;
+    background: -moz-linear-gradient(left, rgba(255, 175, 75, 0) 0%, rgba(255, 146, 10, 1) 42%, rgba(255, 146, 10, 0.96) 60%, rgba(255, 146, 10, 0) 100%) !important;
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255, 175, 75, 0)), color-stop(42%, rgba(255, 146, 10, 1)), color-stop(60%, rgba(255, 146, 10, 0.96)), color-stop(100%, rgba(255, 146, 10, 0))) !important;
+    background: -webkit-linear-gradient(left, rgba(255, 175, 75, 0) 0%, rgba(255, 146, 10, 1) 42%, rgba(255, 146, 10, 0.96) 60%, rgba(255, 146, 10, 0) 100%) !important;
+    background: -o-linear-gradient(left, rgba(255, 175, 75, 0) 0%, rgba(255, 146, 10, 1) 42%, rgba(255, 146, 10, 0.96) 60%, rgba(255, 146, 10, 0) 100%) !important;
+    background: -ms-linear-gradient(left, rgba(255, 175, 75, 0) 0%, rgba(255, 146, 10, 1) 42%, rgba(255, 146, 10, 0.96) 60%, rgba(255, 146, 10, 0) 100%) !important;
+    background: linear-gradient(to right, rgba(255, 175, 75, 0) 0%, rgba(255, 146, 10, 1) 42%, rgba(255, 146, 10, 0.96) 60%, rgba(255, 146, 10, 0) 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffaf4b', endColorstr='#ff920a', GradientType=1) !important;
+}
+
+.cubeproduct:after{
+	right: 0;
+	bottom:0px;
+}
+
+.cubeproduct:before{
+	left: 0;
+	top:0px;
+}
+
+@media (max-width: 600px){
+	.bannerofertas{
+		height: inherit !important;
+		min-height: 350px;
+		padding: 15px 0 !important;
+	}	
+}

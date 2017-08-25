@@ -1,0 +1,43 @@
+.filters {
+    position: relative;
+}
+
+.btnfilter {
+    background-color: transparent;
+    box-shadow: none;
+    color: #fff !important;
+}
+
+#filternav .card-panel{
+	padding: 0 0 !important
+}
+
+#filternav .card-panel a{
+	height: 55px !important;
+	line-height: 55px
+}
+
+.barsearch a {
+	height: 40px !important;
+	max-height: 40px !important
+}
+
+@media (max-width: 992px) {
+    .filters {
+        z-index: 10;
+        margin: 0 0 !important;
+    }
+    .filternav {
+        margin: 0 0 !important;
+    }
+    #spacefilter {
+        position: relative;
+        z-index: 10
+    }
+    .filters .white-text {
+        color: #000 !important;
+    }
+    .btnfilter {
+        color: #000 !important;
+    }
+}

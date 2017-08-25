@@ -1,0 +1,70 @@
+.value-button {
+    display: inline-block;
+    border: 1px solid #ddd;
+    margin: -2px 0 0 0;
+    width: 40px;
+    /*height: 20px;*/
+    text-align: center;
+    vertical-align: middle;
+    padding: 11px 0;
+    background: #eee;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.value-button:hover {
+    cursor: pointer;
+}
+
+.product-option #decrease {
+    margin-right: -4px;
+    border-radius: 8px 0 0 8px;
+}
+
+.product-option #increase {
+    margin-left: -4px;
+    border-radius: 0 8px 8px 0;
+}
+
+.product-option #input-wrap {
+    margin: 0px;
+    padding: 0px;
+}
+
+input#number {
+    text-align: center;
+    border: none;
+    /*border-top: 1px solid #ddd;*/
+    border-bottom: 1px solid #ddd;
+    margin: 0px 0 0 0!important;
+    width: 50%;
+    height: 42px;
+}
+
+.product-option input[type=number]::-webkit-inner-spin-button,
+.product-option input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+@media (max-width: 992px) {
+    input#number {
+        width: 40%;
+    }
+}
+
+@media (max-width: 599px) {
+    .value-button{
+        width: 18%;
+        
+    }
+    input#number {
+        width: 60%;
+    }
+}

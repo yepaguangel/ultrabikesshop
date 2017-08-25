@@ -1,0 +1,67 @@
+.tabs-vertical .tabs {
+    display: -webkit-flex !important;
+    display: flex !important;
+    height: auto !important;
+    -ms-flex-direction: column !important;
+    -webkit-flex-direction: column !important;
+    flex-direction: column !important;
+}
+
+.tabs-vertical .tab {
+    width: 100% !important;
+    -webkit-box-flex: 1 !important;
+    -webkit-flex-grow: 1 !important;
+    -ms-flex-positive: 1 !important;
+    flex-grow: 1 !important;
+    display: block !important;
+    float: left !important;
+    text-align: left !important;
+    line-height: 48px !important;
+    height: 48px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    text-transform: uppercase !important;
+    text-overflow: ellipsis !important;
+}
+
+.tabs-vertical .tab .active {
+    -moz-transition: border-color .5s ease !important;
+    -o-transition: border-color .5s ease !important;
+    -webkit-transition: border-color .5s ease !important;
+    transition: border-color .5s ease !important;
+    border-right: 3px solid #7280ce !important;
+    color: #3f51b5 !important;
+}
+
+.tabs-vertical .tab a {
+    color: #3f51b5 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+    -webkit-transition: color 0.28s ease !important;
+    -moz-transition: color 0.28s ease !important;
+    -o-transition: color 0.28s ease !important;
+    -ms-transition: color 0.28s ease !important;
+    transition: color 0.28s ease !important;
+}
+
+.tabs-vertical .tab a:hover {
+    color: #8591d5 !important;
+}
+
+.tabs-vertical .tab.disabled a {
+    color: #8591d5 !important;
+    cursor: default !important;
+}
+
+.tabs-vertical .indicator {
+    display: none !important;
+}
+
+@media (max-width: 992px) {
+    .tabs-detail {
+        padding: 0 0 !important
+    }
+}

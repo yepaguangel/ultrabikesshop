@@ -1,0 +1,46 @@
+.color-item {
+    height: 80px;
+    position: relative !important;
+    padding-top: 10px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important
+}
+
+.color-item input,
+.color-item label {
+    position: relative;
+    z-index: 5
+}
+
+.color-item .card {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 98%;
+    height: 100%;
+    z-index: 0 !important;
+    overflow: hidden;
+}
+
+.color-item label {
+    width: 100% !important;
+    height: 100% !important
+}
+
+
+@media (max-width: 600px) {
+    #carousel02 {
+        height: 280px;
+        overflow: hidden;
+    }
+    .contentcarru {
+        padding: 0 0 !important;
+    }
+    .contentcarru .carousel{
+    	height: 90px !important
+    }
+    .carousel-item{
+    	width: 80px !important;
+    	height: 80px !important
+    }
+}

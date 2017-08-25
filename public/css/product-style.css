@@ -1,0 +1,180 @@
+.article {
+    display: block;
+    margin: 0 0 30px 0;
+    /*padding: 12px;*/
+    background: white;
+    border-radius: 3px;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+    transition: all 220ms;
+    overflow: hidden;
+}
+
+.show-ray {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    top: 0 !important;
+    height: 40px !important;
+    line-height: 40px !important;
+    animation: fadeOutDown;
+    animation-duration: .2s
+}
+
+.article:hover .show-ray {
+    animation: fadeInUp;
+    animation-duration: .2s
+}
+
+.article:hover {
+    box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    transition: all 220ms;
+}
+
+.article h2 {
+    text-align: center;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin: 0 0 12px 0;
+}
+
+.article .card-image:after {
+    content: '';
+    position: absolute;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all linear .2s
+}
+
+.article:hover .card-image:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(0, 0, 0, .5);
+    top: 0;
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.article .card-title {
+    width: 100% !important;
+    position: relative;
+    z-index: 1;
+    font-size: 20px;
+    padding: 24px 10px !important;
+    background: rgba(0, 0, 0, 0);
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.46) 51%, rgba(0, 0, 0, 0.5) 55%, rgba(0, 0, 0, 0.66) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(51%, rgba(0, 0, 0, 0.46)), color-stop(55%, rgba(0, 0, 0, 0.5)), color-stop(100%, rgba(0, 0, 0, 0.66)));
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.46) 51%, rgba(0, 0, 0, 0.5) 55%, rgba(0, 0, 0, 0.66) 100%);
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.46) 51%, rgba(0, 0, 0, 0.5) 55%, rgba(0, 0, 0, 0.66) 100%);
+    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.46) 51%, rgba(0, 0, 0, 0.5) 55%, rgba(0, 0, 0, 0.66) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.46) 51%, rgba(0, 0, 0, 0.5) 55%, rgba(0, 0, 0, 0.66) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=0);
+}
+
+.article .halfway-fab {
+    right: 10px
+}
+
+.article .card-content {
+    padding: 24px 10px 10px !important
+}
+
+.article .card-action {
+    transform: translateY(100px);
+    transition: all linear .3s;
+    padding: 0;
+}
+
+.article .card-action a {
+    transform: translateY(50px);
+    display: block;
+    float: left;
+    padding: 0 .3rem !important;
+    border-radius: 100px;
+    font-size: .85rem !important;
+    margin-right: 3px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.article:hover .card-action a {
+    transform: translateY(0);
+}
+
+.article:hover .card-action {
+    transform: translateY(0px);
+    padding: 5px 10px 43px !important
+}
+
+.wall-column {
+    display: block;
+    position: relative;
+    width: 25%;
+    float: left;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wall {
+    display: block;
+    position: relative;
+}
+
+.wall-column:first-child {
+    padding-right: 12px;
+}
+
+.wall-column ~ .wall-column {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.wall-column:last-of-type {
+    padding-right: 0;
+}
+
+@media (max-width: 1280px) {
+    .wall-column {
+        width: 33.333333%;
+    }
+}
+
+@media (max-width: 640px) {
+    .wall-column {
+        width: 50%;
+    }
+    .article .card-action{
+    	padding-left: 2px;
+    	padding-right: 2px
+    }
+    .article .card-action .btn{
+    	width: 49% !important;
+    	margin:0 0;
+    	float: left
+    }
+}
+
+@media (max-width: 480px) {
+    .wall-column {
+        width: 50%;
+        padding: 0;
+    }
+    .wall-column:first-child {
+        padding-right: 4px !important;
+    }
+    .wall-column ~ .wall-column {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+}
+
+@media (max-width: 359px) {
+    .wall-column {
+        width: auto;
+        float: none;
+        padding: 0;
+    }
+}

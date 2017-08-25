@@ -1,0 +1,13 @@
+.countbox .countheader {
+    margin: 0 0!important;
+    max-height: 60px !important
+}
+
+@media (max-width: 600px){
+	.countbox .countheader {
+    	max-height: 100px !important;
+	}
+	.countbox .countheader .right{
+		float: left !important
+	}
+}

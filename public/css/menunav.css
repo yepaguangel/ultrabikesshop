@@ -1,0 +1,181 @@
+.navmenu {
+    z-index: 1000;
+    transition: all linear .2s;
+    height: 115px !important;
+    background: rgba(28, 28, 28, 1);
+    background: -moz-linear-gradient(top, rgba(28, 28, 28, 1) 0%, rgba(43, 43, 43, 0.62) 46%, rgba(42, 42, 42, 0.61) 47%, rgba(0, 0, 0, 0) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(28, 28, 28, 1)), color-stop(46%, rgba(43, 43, 43, 0.62)), color-stop(47%, rgba(42, 42, 42, 0.61)), color-stop(100%, rgba(0, 0, 0, 0)));
+    background: -webkit-linear-gradient(top, rgba(28, 28, 28, 1) 0%, rgba(43, 43, 43, 0.62) 46%, rgba(42, 42, 42, 0.61) 47%, rgba(0, 0, 0, 0) 100%);
+    background: -o-linear-gradient(top, rgba(28, 28, 28, 1) 0%, rgba(43, 43, 43, 0.62) 46%, rgba(42, 42, 42, 0.61) 47%, rgba(0, 0, 0, 0) 100%);
+    background: -ms-linear-gradient(top, rgba(28, 28, 28, 1) 0%, rgba(43, 43, 43, 0.62) 46%, rgba(42, 42, 42, 0.61) 47%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(to bottom, rgba(28, 28, 28, 1) 0%, rgba(43, 43, 43, 0.62) 46%, rgba(42, 42, 42, 0.61) 47%, rgba(0, 0, 0, 0) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#1c1c1c', endColorstr='#000000', GradientType=0);
+}
+
+.navmenu a {
+    transition: all linear .2s
+}
+
+.navmenu .brand-logo {
+    padding: 5px 0 0 0
+}
+
+.navmenu .brand-logo svg {
+    width: 280px !important;
+    transition: all linear .2s
+}
+
+.navmenu .brand-logo svg polygon {
+    z-index: 10
+}
+
+.navmenu .brand-logo svg * {
+    transition: all linear .2s
+}
+
+.navbar-fixed .brand-logo svg image {
+    height: 0px !important;
+    opacity: 0 !important;
+}
+
+.navbar-fixed .brand-logo svg {
+    width: 220px !important;
+}
+
+.contactheader {
+    height: 50px;
+    transition: all linear .2s;
+    overflow: hidden;
+}
+
+.navbar-fixed .contactheader {
+    height: 0px;
+}
+
+.navbar-fixed .navmenu {
+    height: 60px !important;
+}
+
+.date-contact {
+    width: 100% !important;
+    display: block !important;
+    margin-bottom: -15px;
+}
+
+.date-contact li a {
+    padding: 0 0 !important;
+    background-color: transparent !important;
+}
+
+.navmenu:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 153, 0, 0.39);
+    background: -moz-linear-gradient(left, rgba(255, 153, 0, 0.39) 0%, rgba(250, 158, 0, 1) 39%, rgba(250, 158, 0, 1) 40%, rgba(250, 158, 0, 0.99) 58%, rgba(250, 158, 0, 0.99) 60%, rgba(255, 153, 0, 0.38) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255, 153, 0, 0.39)), color-stop(39%, rgba(250, 158, 0, 1)), color-stop(40%, rgba(250, 158, 0, 1)), color-stop(58%, rgba(250, 158, 0, 0.99)), color-stop(60%, rgba(250, 158, 0, 0.99)), color-stop(100%, rgba(255, 153, 0, 0.38)));
+    background: -webkit-linear-gradient(left, rgba(255, 153, 0, 0.39) 0%, rgba(250, 158, 0, 1) 39%, rgba(250, 158, 0, 1) 40%, rgba(250, 158, 0, 0.99) 58%, rgba(250, 158, 0, 0.99) 60%, rgba(255, 153, 0, 0.38) 100%);
+    background: -o-linear-gradient(left, rgba(255, 153, 0, 0.39) 0%, rgba(250, 158, 0, 1) 39%, rgba(250, 158, 0, 1) 40%, rgba(250, 158, 0, 0.99) 58%, rgba(250, 158, 0, 0.99) 60%, rgba(255, 153, 0, 0.38) 100%);
+    background: -ms-linear-gradient(left, rgba(255, 153, 0, 0.39) 0%, rgba(250, 158, 0, 1) 39%, rgba(250, 158, 0, 1) 40%, rgba(250, 158, 0, 0.99) 58%, rgba(250, 158, 0, 0.99) 60%, rgba(255, 153, 0, 0.38) 100%);
+    background: linear-gradient(to right, rgba(255, 153, 0, 0.39) 0%, rgba(250, 158, 0, 1) 39%, rgba(250, 158, 0, 1) 40%, rgba(250, 158, 0, 0.99) 58%, rgba(250, 158, 0, 0.99) 60%, rgba(255, 153, 0, 0.38) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ff9900', endColorstr='#ff9900', GradientType=1);
+}
+
+.navmenu #shoppingbtn {
+    width: inherit !important
+}
+
+.navmenu #shoppingbtn li a {
+    padding: 14px 16px !important
+}
+
+.shopmenu {
+    width: 0px;
+    opacity: 0;
+    transition: all linear .2s
+}
+
+.navbar-fixed .shopmenu {
+    width: 30px;
+    opacity: 1;
+    transition: all linear .2s
+}
+
+.tabtop {
+    transition: all linear .2s;
+    z-index: 1000 !important;
+    /*bottom: 45px !important*/
+}
+
+.tabtop a.btn-floating {
+    position: absolute !important;
+    bottom: 0px !important;
+}
+
+.tabtop ul {
+    bottom: 0 !important;
+}
+
+.fixedtabtop {
+    position: fixed !important;
+    z-index: 1000 !important
+}
+
+.fixedtabtop .active {
+    bottom: 0px !important;
+}
+
+.menubtn {
+    margin: 5px 0 0 0 !important;
+    transition: all linear .2s
+}
+
+.navbar-fixed .menubtn {
+    margin: 0 0 0 0 !important
+}
+
+.side-nav {
+    z-index: 1000 !important
+}
+
+#sidenav-overlay {
+    z-index: 900 !important
+}
+
+@media (max-width: 1280px) {
+    .navbar a {
+        font-size: .8rem
+    }
+}
+
+@media (max-width: 992px) {
+    .brand-logo svg image {
+        height: 0px !important;
+        opacity: 0 !important;
+    }
+    .navmenu {
+        height: 70px !important;
+    }
+    .navbar-fixed .contactheader {
+        height: 50px !important;
+    }
+    .tabtop .btn-floating.halfway-fab {
+        right: 10px !important
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar-fixed .navmenu .brand-logo {
+        padding: 0 0 0 0 !important;
+    }
+    .navmenu .brand-logo svg {
+        width: 240px !important;
+    }
+}
+
+
+/*.navmenu .brand-logo svg {display: none}*/
