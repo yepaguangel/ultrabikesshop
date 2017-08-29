@@ -13,20 +13,7 @@
                                 <label for="autocomplete-input">Buscar Imágenes</label>
                             </div>
                         </div>
-                        <div class="row">
-                        	<div class="input-field col s12">
-     
-								{{Form::open([ 
-									'route' => ['file.upload'], 
-									'files' => true, 
-									'method' => 'post',
-									'enctype' => 'multipart/form-data', 
-									'class' => 'dropzone', 
-									'id' => 'image-upload' ]) }}
-									
-								{{Form::close()}}
-							</div>
-                        </div>
+        
                     </div>
                     <div class="col s12">
                         <div class="col s6 m4 l3 hoverable" style="padding: 0 0">
@@ -78,18 +65,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Cerrar</a>
         </div>
     </div>
 </div>
-<script type="text/javascript">
-
-        Dropzone.options.imageUpload = {
-
-            maxFilesize         :       1,
-
-            acceptedFiles: ".jpeg,.jpg,.png,.gif"
-
-        };
-
-</script>

@@ -18,8 +18,8 @@
             <div class="nav-wrapper container" style="overflow-x: auto;overflow-y: hidden;white-space: nowrap;">
                 <!--<div class="col s12" style="overflow-x: auto">-->
                 <a href="#!" class="grey-text breadcrumb" style="display: inline-block !important;">Inicio</a>
-                <a href="#!" class="grey-text breadcrumb" style="display: inline-block !important;">Accesorios</a>
-                <a href="#!" class="grey-text breadcrumb" style="display: inline-block !important;">Vittoria Saguaro Rígida</a>
+                <a href="#!" class="grey-text breadcrumb" style="display: inline-block !important;">{{$producto->marca}}</a>
+                <a href="#!" class="grey-text breadcrumb" style="display: inline-block !important;">{{$producto->nombre}}</a>
                 <!-- </div> -->
             </div>
         </nav>
@@ -51,10 +51,10 @@
         </div>
         <div class="col s12 m6 space">
             <h1 class="flow-text">
-                        INFLADOR HYBRIDROCKET HP SILVER CON CO2 16G TOPEAK
+                        {{$producto->nombre}}
                     </h1>
             <br>
-            <h2 class="flow-text"><b>$157</b>,000</h2>
+            <h2 class="flow-text"><b>${{$producto->preciopublico}}<b></h2>
             <div class="divider"></div>
             <div class="col s12" style="padding:0 0">
                 <ul class="collapsible" data-collapsible="accordion" style="box-shadow: none;border:none">

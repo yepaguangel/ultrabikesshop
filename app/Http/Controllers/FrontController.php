@@ -3,6 +3,8 @@
 namespace yepagu\Http\Controllers;
 
 use Illuminate\Http\Request;
+use yepagu\producto;
+use yepagu\category;
 
 class FrontController extends Controller
 {
@@ -11,14 +13,14 @@ class FrontController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-    	return view('index');
+    public function index(){ 
+        $productos = producto::inRandomOrder()->limit(8)->get();
+        $masvendidos = producto::inRandomOrder()->limit(8)->get();
+        return view('index', compact('productos','masvendidos')); 
     }
-
-    public function detalleproducto()
-    {
-        return view('detalleproducto');
+    public function detalleproducto($id){ 
+        $producto = producto::find($id);
+        return view('detalleproducto',['producto'=>$producto]); 
     }
 
     public function ofertas()
@@ -51,7 +53,7 @@ class FrontController extends Controller
         return view('registro');
     }
 /*
-    public function detalleproducto(){
+    public function (){
     	return view('detalle-producto');
     }
 

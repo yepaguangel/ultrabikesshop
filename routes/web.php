@@ -26,13 +26,11 @@ Route::get('admin/principal', function(){
 	return view('admin.index');
 });
 
-Route::resource('admin/galeriaimg', 'UploadimageController');
-
-
 Route::resource('admin/file', 'FilesController');
 Route::post('admin/file/upload', ['as'=>'file.upload','uses'=>'FilesController@upload']);
 
 Route::resource('admin/producto', 'ProductoController');
+Route::resource('admin/galeriaimg', 'UploadimageController');
 
 Route::get('admin/producto/filtro/{idcategoria}', 'ProductoController@filtro');
 
@@ -46,8 +44,10 @@ Route::get('detalleproducto', function () {
 });
 
 
-Route::get('/','FrontController@index');
-Route::get('detalleproducto','FrontController@detalleproducto');
+Route::get('/', function(){ return view('oops'); });
+
+
+Route::get('detalleproducto/{id}','FrontController@detalleproducto');
 Route::get('ofertas','FrontController@ofertas');
 Route::get('conocenos','FrontController@conocenos');
 Route::get('contactenos','FrontController@contactenos');
@@ -55,5 +55,7 @@ Route::get('micuenta','FrontController@micuenta');
 Route::get('login','FrontController@login');
 Route::get('carrito','FrontController@carrito');
 Route::get('registro','FrontController@registro');
+
+Route::resource('carritoagregar/{id}', 'CarritoController@agregar');
  	
-Route::get('logserrors', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+Route::get('logerrors', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');

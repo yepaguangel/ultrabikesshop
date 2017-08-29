@@ -53,10 +53,9 @@
                         </div>
                         <div class="col s12 m3 white-text">
                             <select>
-                                <option value="" disabled selected>Marca</option>
-                                <option value="1">Option 1</option>
-                                <option value="2">Option 2</option>
-                                <option value="3">Option 3</option>
+                                <option value="" disabled selected>Precio</option>
+                                <option value="1">Precio Menor</option>
+                                <option value="2">Precio Mayor</option>
                             </select>
                             <!-- <label class="left-align">Marca</label> -->
                         </div>
@@ -168,148 +167,26 @@
     <div id="spacefilter">
     </div>
     <div class="wall">
+        @foreach($productos as $prodind)
         <div class="card article">
             <div class="card-image" style="position: relative;">
                 <a class="waves-effect waves-light btn animated show-ray" href="#modal1">Vista Rapida</a>
                 <span class="new badge" data-badge-caption="" style="position: absolute;right: 9px;top: 9px;z-index: 10">29*2.0</span>
                 <img src="img/saguaro-300x300.png">
-                <span class="card-title">Llantas Vitoria X2</span>
+                <span class="card-title">{{str_limit($prodind->nombre, $limit = 25, $end = '...')}}</span>
                 <a class="btn-floating halfway-fab waves-effect waves-light red tooltipped" data-position="top" data-delay="50" data-tooltip="Añadir al Carrito"><i class="material-icons">add_shopping_cart</i></a>
             </div>
             <div class="card-content">
-                <p>Llantas Vitoria Saguaro X2, Llantas Downhill domina los terrenos mas extremos</p>
+                <p>{{str_limit($prodind->descrip, $limit = 20, $end = '...')}}</p>
                 <br>
-                <h5>$180.000</h5>
+                <h5>${{$prodind->preciopublico}}</h5>
             </div>
             <div class="card-action">
-                <a href="detalleproducto" class="waves-effect waves-light btn orange darken-3 white-text">Ver Detalles</a>
+                {{ link_to('detalleproducto/'.$prodind->id, $title = 'Ver Detalle', $attributes = ['class'=>'waves-effect waves-light btn orange darken-3 white-text']) }}
                 <a href="#" class="waves-effect waves-light btn orange darken-3 white-text">Comprar</a>
             </div>
         </div>
-        <div class="card article" style="width: 100% !important;width: 500px">
-            <div class="card-image">
-                <a class="waves-effect waves-light btn animated show-ray" href="#modal1">Vista Rapida</a>
-                <span class="new badge" data-badge-caption="" style="position: absolute;right: 9px;top: 9px;z-index: 10">29*2.0</span>
-                <img src="img/rin-schwalbe-300x300.jpg">
-                <span class="card-title">Llantas Vitoria X2</span>
-                <a class="btn-floating halfway-fab waves-effect waves-light red tooltipped" data-position="top" data-delay="50" data-tooltip="Añadir al Carrito"><i class="material-icons">add_shopping_cart</i></a>
-            </div>
-            <div class="card-content">
-                <p>Llantas Vitoria Saguaro X2, Llantas Downhill domina los terrenos mas extremos</p>
-                <br>
-                <h5>$180.000</h5>
-            </div>
-            <div class="card-action">
-                <a href="detalleproducto" class="waves-effect waves-light btn orange darken-3 white-text">Ver Detalles</a>
-                <a href="#" class="waves-effect waves-light btn orange darken-3 white-text">Comprar</a>
-            </div>
-        </div>
-        <div class="card article">
-            <div class="card-image">
-                <a class="waves-effect waves-light btn animated show-ray" href="#modal1">Vista Rapida</a>
-                <span class="new badge" data-badge-caption="" style="position: absolute;right: 9px;top: 9px;z-index: 10">250 PSI</span>
-                <img src="img/tmmb-2-300x300.jpg">
-                <span class="card-title">Llantas Vitoria X2</span>
-                <a class="btn-floating halfway-fab waves-effect waves-light red tooltipped" data-position="top" data-delay="50" data-tooltip="Añadir al Carrito"><i class="material-icons">add_shopping_cart</i></a>
-            </div>
-            <div class="card-content">
-                <p>Llantas Vitoria Saguaro X2, Llantas Downhill domina los terrenos mas extremos</p>
-                <br>
-                <h5>$180.000</h5>
-            </div>
-            <div class="card-action">
-                <a href="detalleproducto" class="waves-effect waves-light btn orange darken-3 white-text">Ver Detalles</a>
-                <a href="#" class="waves-effect waves-light btn orange darken-3 white-text">Comprar</a>
-            </div>
-        </div>
-        <div class="card article">
-            <div class="card-image">
-                <a class="waves-effect waves-light btn animated show-ray" href="#modal1">Vista Rapida</a>
-                <img src="img/luz-infla-300x300.jpg">
-                <span class="card-title">Llantas Vitoria X2</span>
-                <a class="btn-floating halfway-fab waves-effect waves-light red tooltipped" data-position="top" data-delay="50" data-tooltip="Añadir al Carrito"><i class="material-icons">add_shopping_cart</i></a>
-            </div>
-            <div class="card-content">
-                <p>Llantas Vitoria Saguaro X2, Llantas Downhill domina los terrenos mas extremos</p>
-                <br>
-                <h5>$180.000</h5>
-            </div>
-            <div class="card-action">
-                <a href="detalleproducto" class="waves-effect waves-light btn orange darken-3 white-text">Ver Detalles</a>
-                <a href="#" class="waves-effect waves-light btn orange darken-3 white-text">Comprar</a>
-            </div>
-        </div>
-        <div class="card article">
-            <div class="card-image">
-                <a class="waves-effect waves-light btn animated show-ray" href="#modal1">Vista Rapida</a>
-                <img src="img/Combo-luz-tms067-300x300.jpg">
-                <span class="card-title">Llantas Vitoria X2</span>
-                <a class="btn-floating halfway-fab waves-effect waves-light red tooltipped" data-position="top" data-delay="50" data-tooltip="Añadir al Carrito"><i class="material-icons">add_shopping_cart</i></a>
-            </div>
-            <div class="card-content">
-                <p>Llantas Vitoria Saguaro X2, Llantas Downhill domina los terrenos mas extremos</p>
-                <br>
-                <h5>$180.000</h5>
-            </div>
-            <div class="card-action">
-                <a href="detalleproducto" class="waves-effect waves-light btn orange darken-3 white-text">Ver Detalles</a>
-                <a href="#" class="waves-effect waves-light btn orange darken-3 white-text">Comprar</a>
-            </div>
-        </div>
-        <div class="card article">
-            <div class="card-image">
-                <a class="waves-effect waves-light btn animated show-ray" href="#modal1">Vista Rapida</a>
-                <span class="new badge" data-badge-caption="" style="position: absolute;right: 9px;top: 9px;z-index: 10">29*2.0</span>
-                <img src="img/saguaro-300x300.png">
-                <span class="card-title">Llantas Vitoria X2</span>
-                <a class="btn-floating halfway-fab waves-effect waves-light red tooltipped" data-position="top" data-delay="50" data-tooltip="Añadir al Carrito"><i class="material-icons">add_shopping_cart</i></a>
-            </div>
-            <div class="card-content">
-                <p>Llantas Vitoria Saguaro X2, Llantas Downhill domina los terrenos mas extremos</p>
-                <br>
-                <h5>$180.000</h5>
-            </div>
-            <div class="card-action">
-                <a href="detalleproducto" class="waves-effect waves-light btn orange darken-3 white-text">Ver Detalles</a>
-                <a href="#" class="waves-effect waves-light btn orange darken-3 white-text">Comprar</a>
-            </div>
-        </div>
-        <div class="card article">
-            <div class="card-image">
-                <a class="waves-effect waves-light btn animated show-ray" href="#modal1">Vista Rapida</a>
-                <span class="new badge" data-badge-caption="" style="position: absolute;right: 9px;top: 9px;z-index: 10">29*2.0</span>
-                <img src="img/saguaro-300x300.png">
-                <span class="card-title">Llantas Vitoria X2</span>
-                <a class="btn-floating halfway-fab waves-effect waves-light red tooltipped" data-position="top" data-delay="50" data-tooltip="Añadir al Carrito"><i class="material-icons">add_shopping_cart</i></a>
-            </div>
-            <div class="card-content">
-                <p>Llantas Vitoria Saguaro X2, Llantas Downhill domina los terrenos mas extremos</p>
-                <br>
-                <h5>$180.000</h5>
-            </div>
-            <div class="card-action">
-                <a href="detalleproducto" class="waves-effect waves-light btn orange darken-3 white-text">Ver Detalles</a>
-                <a href="#" class="waves-effect waves-light btn orange darken-3 white-text">Comprar</a>
-            </div>
-        </div>
-        <div class="card article">
-            <div class="card-image">
-                <a class="waves-effect waves-light btn animated show-ray" href="#modal1">Vista Rapida</a>
-                <span class="new badge" data-badge-caption="" style="position: absolute;right: 9px;top: 9px;z-index: 10">29*2.0</span>
-                <img src="img/saguaro-300x300.png">
-                <span class="card-title">Llantas Vitoria X2</span>
-                <a class="btn-floating halfway-fab waves-effect waves-light red tooltipped" data-position="top" data-delay="50" data-tooltip="Añadir al Carrito"><i class="material-icons">add_shopping_cart</i></a>
-            </div>
-            <div class="card-content">
-                <p>Llantas Vitoria Saguaro X2, Llantas Downhill domina los terrenos mas extremos</p>
-                <br>
-                <h5>$180.000</h5>
-            </div>
-            <div class="card-action">
-                <a href="detalleproducto" class="waves-effect waves-light btn orange darken-3 white-text">Ver Detalles</a>
-                <a href="#" class="waves-effect waves-light btn orange darken-3 white-text">Comprar</a>
-            </div>
-        </div>
+        @endforeach
     </div>
     <div class="row">
         <div class="col s12 center">
@@ -329,6 +206,7 @@
         </div>
         <div class="col s12" style="position:relative;z-index: 8">
             <div id="carousel01" class="owl-carousel owl-theme">
+                @foreach($masvendidos as $masv)
                 <div class="item card waves-effect waves-light itemtop">
                     <div class="card-image">
                         <img src="img/saguaro-300x300.png">
@@ -337,142 +215,20 @@
                                         <i class="material-icons">add</i>
                                     </a>
                             <ul>
-                                <li><a class="btn-floating red tooltipped" data-position="left" data-delay="50" data-tooltip="Añadir al carrito"><i class="material-icons">shopping_cart</i></a></li>
+                                <li>
+                                {{ link_to('detalleproducto/'.$prodind->id, $title = 'Ver Detalle', $attributes = ['class'=>'btn-floating red tooltipped', 'data-position'=>'left', 'data-delay'=>'50', 'data-tooltip'=>'Añadir al carrito']) }}
+                                <a class="btn-floating red tooltipped" ><i class="material-icons">shopping_cart</i></a></li>
                                 <li><a class="btn-floating orange darken-1 tooltipped" data-position="left" data-delay="50" data-tooltip="Ver Descripción"><i class="material-icons">info</i></a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="card-content">
-                        <span class="card-title flow-text">Llantas Vitoria X2</span>
-                        <p>$180.000</p>
+                        <span class="card-title flow-text">{{ str_limit($masv->nombre, $limit = 10, $end = '...') }}</span>
+                        <p>${{$masv->preciopublico}}</p>
                     </div>
                 </div>
-                <div class="item card waves-effect waves-light itemtop">
-                    <div class="card-image">
-                        <img src="img/saguaro-300x300.png">
-                        <div class="fixed-action-btn vertical click-to-toggle">
-                            <a class="btn-floating btn-large halfway-fab waves-effect waves-light red">
-                                        <i class="material-icons">add</i>
-                                    </a>
-                            <ul>
-                                <li><a class="btn-floating red tooltipped" data-position="left" data-delay="50" data-tooltip="Añadir al carrito"><i class="material-icons">shopping_cart</i></a></li>
-                                <li><a class="btn-floating orange darken-1 tooltipped" data-position="left" data-delay="50" data-tooltip="Ver Descripción"><i class="material-icons">info</i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title flow-text">Llantas Vitoria X2</span>
-                        <p>$180.000</p>
-                    </div>
-                </div>
-                <div class="item card waves-effect waves-light itemtop">
-                    <div class="card-image">
-                        <img src="img/saguaro-300x300.png">
-                        <div class="fixed-action-btn vertical click-to-toggle">
-                            <a class="btn-floating btn-large halfway-fab waves-effect waves-light red">
-                                        <i class="material-icons">add</i>
-                                    </a>
-                            <ul>
-                                <li><a class="btn-floating red tooltipped" data-position="left" data-delay="50" data-tooltip="Añadir al carrito"><i class="material-icons">shopping_cart</i></a></li>
-                                <li><a class="btn-floating orange darken-1 tooltipped" data-position="left" data-delay="50" data-tooltip="Ver Descripción"><i class="material-icons">info</i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title flow-text">Llantas Vitoria X2</span>
-                        <p>$180.000</p>
-                    </div>
-                </div>
-                <div class="item card waves-effect waves-light itemtop">
-                    <div class="card-image">
-                        <img src="img/saguaro-300x300.png">
-                        <div class="fixed-action-btn vertical click-to-toggle">
-                            <a class="btn-floating btn-large halfway-fab waves-effect waves-light red">
-                                        <i class="material-icons">add</i>
-                                    </a>
-                            <ul>
-                                <li><a class="btn-floating red tooltipped" data-position="left" data-delay="50" data-tooltip="Añadir al carrito"><i class="material-icons">shopping_cart</i></a></li>
-                                <li><a class="btn-floating orange darken-1 tooltipped" data-position="left" data-delay="50" data-tooltip="Ver Descripción"><i class="material-icons">info</i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title flow-text">Llantas Vitoria X2</span>
-                        <p>$180.000</p>
-                    </div>
-                </div>
-                <div class="item card waves-effect waves-light itemtop">
-                    <div class="card-image">
-                        <img src="img/saguaro-300x300.png">
-                        <div class="fixed-action-btn vertical click-to-toggle">
-                            <a class="btn-floating btn-large halfway-fab waves-effect waves-light red">
-                                        <i class="material-icons">add</i>
-                                    </a>
-                            <ul>
-                                <li><a class="btn-floating red tooltipped" data-position="left" data-delay="50" data-tooltip="Añadir al carrito"><i class="material-icons">shopping_cart</i></a></li>
-                                <li><a class="btn-floating orange darken-1 tooltipped" data-position="left" data-delay="50" data-tooltip="Ver Descripción"><i class="material-icons">info</i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title flow-text">Llantas Vitoria X2</span>
-                        <p>$180.000</p>
-                    </div>
-                </div>
-                <div class="item card waves-effect waves-light itemtop">
-                    <div class="card-image">
-                        <img src="img/saguaro-300x300.png">
-                        <div class="fixed-action-btn vertical click-to-toggle">
-                            <a class="btn-floating btn-large halfway-fab waves-effect waves-light red">
-                                        <i class="material-icons">add</i>
-                                    </a>
-                            <ul>
-                                <li><a class="btn-floating red tooltipped" data-position="left" data-delay="50" data-tooltip="Añadir al carrito"><i class="material-icons">shopping_cart</i></a></li>
-                                <li><a class="btn-floating orange darken-1 tooltipped" data-position="left" data-delay="50" data-tooltip="Ver Descripción"><i class="material-icons">info</i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title flow-text">Llantas Vitoria X2</span>
-                        <p>$180.000</p>
-                    </div>
-                </div>
-                <div class="item card waves-effect waves-light itemtop">
-                    <div class="card-image">
-                        <img src="img/saguaro-300x300.png">
-                        <div class="fixed-action-btn vertical click-to-toggle">
-                            <a class="btn-floating btn-large halfway-fab waves-effect waves-light red">
-                                        <i class="material-icons">add</i>
-                                    </a>
-                            <ul>
-                                <li><a class="btn-floating red tooltipped" data-position="left" data-delay="50" data-tooltip="Añadir al carrito"><i class="material-icons">shopping_cart</i></a></li>
-                                <li><a class="btn-floating orange darken-1 tooltipped" data-position="left" data-delay="50" data-tooltip="Ver Descripción"><i class="material-icons">info</i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title flow-text">Llantas Vitoria X2</span>
-                        <p>$180.000</p>
-                    </div>
-                </div>
-                <div class="item card waves-effect waves-light itemtop">
-                    <div class="card-image">
-                        <img src="img/saguaro-300x300.png">
-                        <div class="fixed-action-btn vertical click-to-toggle">
-                            <a class="btn-floating btn-large halfway-fab waves-effect waves-light red">
-                                        <i class="material-icons">add</i>
-                                    </a>
-                            <ul>
-                                <li><a class="btn-floating red tooltipped" data-position="left" data-delay="50" data-tooltip="Añadir al carrito"><i class="material-icons">shopping_cart</i></a></li>
-                                <li><a class="btn-floating orange darken-1 tooltipped" data-position="left" data-delay="50" data-tooltip="Ver Descripción"><i class="material-icons">info</i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title flow-text">Llantas Vitoria X2</span>
-                        <p>$180.000</p>
-                    </div>
-                </div>
+                @endforeach
+                
             </div>
         </div>
     </div>

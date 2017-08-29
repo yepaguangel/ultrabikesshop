@@ -4,7 +4,7 @@
 <head>
     <title>ULTRABIKES SHOP ADMIN</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+    {!! Html::style('css/materialize.min.css') !!}
     {!! Html::style('css/owl.carousel.min.css') !!}
     {!! Html::style('css/tabs-vertical.css') !!}
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/icon?family=Material+Icons">

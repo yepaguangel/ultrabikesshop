@@ -10,6 +10,6 @@ class Galleryimg extends Model
 
     public $timestamps = false;
     
-    protected $fillable = ['claveimg', 'nomoriginal', 'descrip'];
+    protected $fillable = ['claveimg', 'nomoriginal', 'extension', 'descrip'];
     
 }

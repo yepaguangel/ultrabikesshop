@@ -49,7 +49,7 @@
                     <div class="row">
                         <div class="panel-body">
                             {!! Form::open(['route'=> 'galeriaimg.store', 'method' => 'POST', 'files'=>'true', 'id' => 'my-dropzone' , 'class' => 'dropzone']) !!}
-                            <div class="dz-message" style="height:200px;">
+                            <div class="dz-message" style="height:120px; border:4px dashed blue;">
                             Arrastre sus Imagenes Aqui
                             </div>
                             <div class="dropzone-previews"></div>
@@ -59,6 +59,37 @@
 
                     </div>
                     <div class="row">
+                        @foreach($galimagenes as $img)
+                        <div class=" col s6 m3 l4">
+                            <div class="card">
+                              <div class="card-image">
+                                {{ Html::image('public/filegallery/'. $img->claveimg .'.'. $img->extension, 'Galeria Img', array('class' => 'circle')) }}
+                                <a class="btn-floating btn-large halfway-fab waves-effect waves-light red"><i class="material-icons">delete</i></a>
+                              </div>
+                              <div class="card-content">
+                                <span class="card-title" contenteditable="true">
+                                {!!Form::label('Descripcion Imagen')!!}
+                                {!!Form::text('descrip',$img->descrip, array('id'=>'txt'.$img->id, 'onblur'=>'act('.$img->id.')'))!!}
+                                <input type="hidden" name="token" value="{{csrf_token()}}" id="token">
+                                </span>
+                              </div>
+                            </div>
+                        </div>
+                        @endforeach
+
+                        <!--
+                        <div class=" col s6 m3 l4">
+                            <div class="card">
+                              <div class="card-image">
+                                
+                                <img src="images/sample-1.jpg">
+                                <a class="btn-floating btn-large halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                              </div>
+                              <div class="card-content">
+                                <span class="card-title" contenteditable="true">Título de la Tarjeta</span>
+                              </div>
+                            </div>
+                        </div>
                         <div class=" col s6 m3 l4">
                             <div class="card">
                               <div class="card-image">
@@ -73,7 +104,6 @@
                         <div class=" col s6 m3 l4">
                             <div class="card">
                               <div class="card-image">
-                                {{ Html::image('img/saguaro-300x300.png', 'una-descripcion', array('class' => 'circle')) }}
                                 <img src="images/sample-1.jpg">
                                 <a class="btn-floating btn-large halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
                               </div>
@@ -82,30 +112,12 @@
                               </div>
                             </div>
                         </div>
-                        <div class=" col s6 m3 l4">
-                            <div class="card">
-                              <div class="card-image">
-                                <img src="images/sample-1.jpg">
-                                <a class="btn-floating btn-large halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                              </div>
-                              <div class="card-content">
-                                <span class="card-title" contenteditable="true">Título de la Tarjeta</span>
-                              </div>
-                            </div>
-                        </div>
-                        <div class=" col s6 m3 l4">
-                            <div class="card">
-                              <div class="card-image">
-                                <img src="images/sample-1.jpg">
-                                <a class="btn-floating btn-large halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                              </div>
-                              <div class="card-content">
-                                <span class="card-title" contenteditable="true">Título de la Tarjeta</span>
-                              </div>
-                            </div>
-                        </div>
+                        -->
                     </div>
                 </div>
+
+                {!! $galimagenes->render() !!}
+
             </div>
         </div>
     </div>
@@ -116,12 +128,48 @@
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/15309/tableToD3Chart.js"></script>
     <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
     <script type="text/javascript">
+     function act(id){
+        var route = "http://localhost:8000/admin/galeriaimg/"+id;
+        var txt = document.getElementById('txt'+id);
+        var text = txt.value;
+        var token = document.getElementById('token');
+        console.log(token.value);
+
+        if(text !== '')
+        {
+             $.ajax({
+                url: route,
+                headers: {'X-CSRF-TOKEN':token.value},
+                data: {descrip:text},
+                dataType: "json",
+                method: "PUT",
+                success: function(result)
+                {
+                    if (result.msg == 'ok')
+                    {
+                        console.log('Dato Actualizado')
+                    }
+                    else
+                    {
+                        alert('!Ups Lo Sentimos, Ocurrio un problema al actualizar datos');
+                    }
+                },
+                fail: function(){
+                },
+                beforeSend: function(){
+                }
+            });
+        }
+       
+    }
+
+
     $(document).ready(function($) {
 
         Dropzone.options.myDropzone = {
             autoProcessQueue: false,
             uploadMultiple: true,
-            maxFilezise: 10,
+            maxFilezise: 2,
             createImageThumbnails: true,
             addRemoveLinks:true,
             
@@ -135,10 +183,10 @@
                     myDropzone.processQueue();
                 });
                 this.on("addedfile", function(file) {
-                    alert("file uploaded");
+                    
                 });
                 
-                this.on("completo", function(file) {
+                this.on("complete", function(file) {
                     myDropzone.removeFile(file);
                 });
  
@@ -147,6 +195,8 @@
                 );
             }
         };
+
+
 
         $('.collapsible').collapsible();
 

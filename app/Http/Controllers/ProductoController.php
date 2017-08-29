@@ -3,8 +3,9 @@
 namespace yepagu\Http\Controllers;
 
 use Illuminate\Http\Request;
-use yepagu\producto;
-use yepagu\category;
+use yepagu\Producto;
+use yepagu\Category;
+use yepagu\Galleryimg;
 use Redirect;
 use Session;
 
@@ -21,7 +22,7 @@ class ProductoController extends Controller
         // $productos = \yepagu\producto::All()->take(10);
 
         //PAGINADO
-        $productos = producto::paginate(10);
+        $productos = Producto::paginate(10);
         Return view('admin.producto', compact('productos'));
     }
 
@@ -32,9 +33,10 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        $categorias = category::all();
-        $productos = producto::all();
-        Return view('admin.productonuevo', compact('categorias','productos'));
+        $categorias = Category::all();
+        $productos = Producto::all();
+        $galerias = Galleryimg::all();
+        Return view('admin.productonuevo', compact('categorias','productos','galerias'));
     }
 
     /**
@@ -45,7 +47,7 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        \yepagu\producto::create([
+        \yepagu\Producto::create([
             'referencia'=> $request['referencia'],
             'nombre'=> $request['nombre'],
             'precioalmacen'=> $request['precioalmacen'],
@@ -61,7 +63,7 @@ class ProductoController extends Controller
             'anotaciones'=> $request['anotaciones'],
             'multimedia'=> $request['multimedia']
             ]);
-        return Redirect::to('admin.producto');
+        return Redirect::to('admin/producto');
     }
 
     /**
@@ -83,9 +85,10 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
-        $producto = producto::find($id);
-        $categorias = category::all();
-        Return view('admin.productoeditar',['producto'=>$producto], compact('categorias'));
+        $producto = Producto::find($id);
+        $categorias = Category::all();
+        $galerias = Galleryimg::all();
+        Return view('admin.productoeditar',['producto'=>$producto], compact('categorias','galerias'));
     }
 
     /**
@@ -97,7 +100,7 @@ class ProductoController extends Controller
      */
     public function update($id, Request $request)
     {
-         $producto = producto::find($id);
+         $producto = Producto::find($id);
          $producto->fill($request->all());
          $producto->save();
          Session::flash('messagge','Producto Modificado');
@@ -116,7 +119,7 @@ class ProductoController extends Controller
     }
 
     public function filtro($idcategoria){
-        $productos = producto::where('idcategoria',$idcategoria)->limit(10)->get();
+        $productos = Producto::where('idcategoria',$idcategoria)->limit(10)->get();
         return view('admin.productofiltro', compact('productos'));
     }
 }

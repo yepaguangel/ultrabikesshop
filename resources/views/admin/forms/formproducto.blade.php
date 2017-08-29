@@ -7,7 +7,9 @@
 <div class="col s12 m12 l10 left card" style="padding: 0 0">
 	<nav style="box-shadow: none">
 		<div class="nav-wrapper white">
-			<a href="#" class="brand-logo grey-text darken-4 flow-text" style="padding-left: 8px">Nombre Producto</a>
+			<a href="#" class="brand-logo grey-text darken-4 flow-text" style="padding-left: 8px">
+			
+			</a>
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
 				<li>
 				<button id="registrarBtn" class="white-text darken-4 btn" type="submit">Guardar</buttton>
@@ -50,15 +52,12 @@
         	<label>Añade Imágenes de tus productos dando click sobre cada pestaña del carrusel</label>
         </div>
         <div class="file-field input-field col s12" style="float: none">
-	      <div class="btn col s12">
-	        <span>Subir Imágen</span>
-	        <input type="file">
-	      </div>
 	      <div class="file-path-wrapper">
 	        <input class="file-path validate" type="text">
 	      </div>
 	    </div>
-	    
+	     @include('admin.forms.modalimagenes')
+	     <!--
        	<nav>
 	    	<div class="nav-wrapper white col s12">
 	    		<a href="#!">
@@ -67,6 +66,7 @@
 				</a>
 	    	</div>
 	    </nav>
+	    -->
 	</div>
 	<div class="col s12 m5 tabs-vertical">
 		<a class="waves-effect waves-light btn" onClick="expandAll();"><i class="material-icons left">fullscreen</i>Expand All</a>
@@ -78,7 +78,7 @@
 			      <div class="collapsible-body">
 			      	<div class="input-field">
 			      		{!!Form::label('Referencia del Producto')!!}
-						{!!Form::text('referencia',null)!!}
+						{!!Form::text('referencia',null,array('required' => 'required'))!!}
 			      	</div>
 			      </div>
 			    </li>
@@ -87,7 +87,7 @@
 			      <div class="collapsible-body">
 			      	<div class="input-field">
 			      		{!!Form::label('Nombre del Producto')!!}
-						{!!Form::text('nombre',null)!!}
+						{!!Form::text('nombre',null,array('required' => 'required'))!!}
 			      	</div>
 			      </div>
 			    </li>
@@ -96,7 +96,7 @@
 			      <div class="collapsible-body">
 			      	<div class="input-field">
 			      		{!!Form::label('Digite el precio sin puntos ni comas')!!}
-						{!!Form::text('precioalmacen',null)!!}
+						{!!Form::text('precioalmacen',null,array('required' => 'required'))!!}
 			      	</div>
 			      </div>
 			    </li>
@@ -105,7 +105,7 @@
 			      <div class="collapsible-body">
 			      	<div class="input-field">
 			      		{!!Form::label('Digite el precio sin puntos ni comas')!!}
-						{!!Form::text('preciopublico',null)!!}
+						{!!Form::text('preciopublico',null,array('required' => 'required'))!!}
 			      	</div>
 			      </div>
 			    </li>
@@ -114,7 +114,7 @@
 			      <div class="collapsible-body">
 			      	<div class="input-field">
 			      		{!!Form::label('Linea')!!}
-						{!!Form::text('linea',null)!!}
+						{!!Form::text('linea',null,array('required' => 'required'))!!}
 			      	</div>
 			      </div>
 			    </li>
@@ -123,7 +123,7 @@
 			      <div class="collapsible-body">
 			      	<div class="input-field">
 			      		{!!Form::label('Marca')!!}
-						{!!Form::text('marca',null)!!}
+						{!!Form::text('marca',null,array('required' => 'required'))!!}
 			      	</div>
 			      </div>
 			    </li>
@@ -171,7 +171,7 @@
 			      <div class="collapsible-header"><i class="material-icons">store</i>Cantidad en Stock</div>
 			      <div class="collapsible-body">
 			      	<div class="input-field">
-						{!!Form::text('stock',null)!!}
+						{!!Form::text('stock',null,array('required' => 'required'))!!}
 			      	</div>
 			      </div>
 			    </li>
@@ -180,7 +180,16 @@
 			      <div class="collapsible-body">
 			      	<div class="input-field">
 			      		{!!Form::label('Descripcion del Producto')!!}
-						{!!Form::text('descripcion',null)!!}
+						{!!Form::text('descripcion',null,array('required' => 'required'))!!}
+			      	</div>
+			      </div>
+			    </li>
+			     <li>
+			      <div class="collapsible-header"><i class="material-icons">description</i>Oferta</div>
+			      <div class="collapsible-body">
+			      	<div class="input-field">
+			      		{!!Form::label('Oferta: Si=1 - No=0')!!}
+						{!!Form::text('oferta',null,array('required' => 'required'))!!}
 			      	</div>
 			      </div>
 			    </li>
@@ -207,7 +216,7 @@
 			      <div class="collapsible-body">
 			      	<div class="input-field">
 			      		{!!Form::label('Codigo de Categoria (Seleccione del Listado)')!!}
-						{!!Form::text('idcategoria',null)!!}
+						{!!Form::text('idcategoria',null,array('required' => 'required'))!!}
 			      	</div>
 			      </div>
 			    </li>

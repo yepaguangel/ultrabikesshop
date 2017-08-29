@@ -49,6 +49,9 @@
         <li>
         {{ link_to('admin/categoria/', $title = 'Categoria', $attributes = ['class'=>'white-text']) }}
         </li>
+        <li>
+        {{ link_to('admin/galeriaimg/', $title = 'Galeria', $attributes = ['class'=>'white-text']) }}
+        </li>
     </ul>
     <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
 </div>
