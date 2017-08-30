@@ -95,11 +95,12 @@
     <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
     <script type="text/javascript">
      function act(id){
-        var route = "http://localhost:8000/admin/galeriaimg/"+id;
+        var URLdomain = window.location.host;
+
+        var route = 'http://' + URLdomain + "/admin/galeriaimg/" + id;
         var txt = document.getElementById('txt'+id);
         var text = txt.value;
         var token = document.getElementById('token');
-        console.log(token.value);
 
         if(text !== '')
         {
