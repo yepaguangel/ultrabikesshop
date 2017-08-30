@@ -16,15 +16,6 @@ class UploadimageController extends Controller
     	$path = public_path().'/filegallery/';
         $files = $request->file('file');
         foreach($files as $file){
-        	//AYUDA
-        	/*
-        	$document = $request->file('file_name');
-			$document->getRealPath();
-			$document->getClientOriginalName();
-			$document->getClientOriginalExtension();
-			$document->getSize();
-			$document->getMimeType();
-			*/
 
         	//ADIGNAMOS UN CODIGO UNICO
         	$codunique = uniqid();
@@ -51,8 +42,6 @@ class UploadimageController extends Controller
             }else{
                 echo ':(';
             }
-            $galimagenes = Galleryimg::paginate(20);
-            return view('admin.galeriaimg');
         }
     }
 

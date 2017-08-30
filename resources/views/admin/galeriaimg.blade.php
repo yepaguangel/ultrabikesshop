@@ -60,15 +60,17 @@
                     </div>
                     <div class="row">
                         @foreach($galimagenes as $img)
-                        <div class=" col s6 m3 l4">
+                        <div class=" col s6 m3 l3">
                             <div class="card">
-                              <div class="card-image">
-                                {{ Html::image('public/filegallery/'. $img->claveimg .'.'. $img->extension, 'Galeria Img', array('class' => 'circle')) }}
+                              <div class="card-image valign-wrapper" style="height:250px">
+                                <div class="valign" style="width: 100%">
+                                    {{ Html::image('filegallery/'. $img->claveimg .'.'. $img->extension, $img->nomoriginal, array('class' => 'responsive-img')) }}
+                                </div>
                                 <a class="btn-floating btn-large halfway-fab waves-effect waves-light red"><i class="material-icons">delete</i></a>
                               </div>
                               <div class="card-content">
-                                <span class="card-title" contenteditable="true">
                                 {!!Form::label('Descripcion Imagen')!!}
+                                <span class="card-title" contenteditable="true">
                                 {!!Form::text('descrip',$img->descrip, array('id'=>'txt'.$img->id, 'onblur'=>'act('.$img->id.')'))!!}
                                 <input type="hidden" name="token" value="{{csrf_token()}}" id="token">
                                 </span>
@@ -77,42 +79,6 @@
                         </div>
                         @endforeach
 
-                        <!--
-                        <div class=" col s6 m3 l4">
-                            <div class="card">
-                              <div class="card-image">
-                                
-                                <img src="images/sample-1.jpg">
-                                <a class="btn-floating btn-large halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                              </div>
-                              <div class="card-content">
-                                <span class="card-title" contenteditable="true">Título de la Tarjeta</span>
-                              </div>
-                            </div>
-                        </div>
-                        <div class=" col s6 m3 l4">
-                            <div class="card">
-                              <div class="card-image">
-                                <img src="images/sample-1.jpg">
-                                <a class="btn-floating btn-large halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                              </div>
-                              <div class="card-content">
-                                <span class="card-title" contenteditable="true">Título de la Tarjeta</span>
-                              </div>
-                            </div>
-                        </div>
-                        <div class=" col s6 m3 l4">
-                            <div class="card">
-                              <div class="card-image">
-                                <img src="images/sample-1.jpg">
-                                <a class="btn-floating btn-large halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                              </div>
-                              <div class="card-content">
-                                <span class="card-title" contenteditable="true">Título de la Tarjeta</span>
-                              </div>
-                            </div>
-                        </div>
-                        -->
                     </div>
                 </div>
 
@@ -167,11 +133,14 @@
     $(document).ready(function($) {
 
         Dropzone.options.myDropzone = {
+            maxFiles: 10,
             autoProcessQueue: false,
             uploadMultiple: true,
-            maxFilezise: 2,
+            maxFilezise: 100,
             createImageThumbnails: true,
             addRemoveLinks:true,
+            acceptedFiles: ".jpeg,.jpg",
+            autoDiscover: false,
             
             init: function() {
                 var submitBtn = document.querySelector("#submit");

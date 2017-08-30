@@ -45,6 +45,27 @@
                  @include('admin.forms.formmenuadmin')
                  
                 <div class="col s12 m12 l10 left">
+                    <div class="col s12">
+                        <div class="card col s12">
+                            <blockquote><p>Valores de envío</p></blockquote>
+                            <div class="col s6 m6 l3 input-field">
+                                <label>Disandina</label>
+                                <input type="text" name="Disandina">
+                            </div>
+                            <div class="col s6 m6 l3 input-field">
+                                <label>Schwalbe</label>
+                                <input type="text" name="Disandina">
+                            </div>
+                            <div class="col s6 m6 l3 input-field">
+                                <label>Mediano</label>
+                                <input type="text" name="Disandina">
+                            </div>
+                            <div class="col s6 m6 l3 input-field">
+                                <label>Económico</label>
+                                <input type="text" name="Disandina">
+                            </div>
+                        </div>
+                    </div>
                     <div class="col s12 m7" style="height: 100%;">
                         <div class="card blue">
                             <div class="card-content white-text">
