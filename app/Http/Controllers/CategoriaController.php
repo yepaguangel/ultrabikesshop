@@ -3,8 +3,8 @@
 namespace yepagu\Http\Controllers;
 
 use Illuminate\Http\Request;
-use yepagu\producto;
-use yepagu\category;
+use yepagu\Producto;
+use yepagu\Category;
 use Redirect;
 use Session;
 
@@ -21,7 +21,7 @@ class CategoriaController extends Controller
         // $productos = \yepagu\producto::All()->take(10);
 
         //PAGINADO
-        $categorias = category::all();
+        $categorias = Category::all();
         Return view('admin.categoria', compact('categorias'));
     }
 
@@ -45,7 +45,7 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {        
-        \yepagu\category::create([
+        \yepagu\Category::create([
             'nombrecategoria'=> $request['nombrecategoria']
             ]);
         return redirect('admin/categoria')->with('message', 'store');
@@ -83,7 +83,7 @@ class CategoriaController extends Controller
     public function update(Request $request, $id)
     {
         
-        $categoria = category::find($id);
+        $categoria = Category::find($id);
         $categoria->fill($request->all());
         $categoria->save();
         Session::flash('messagge','Producto Modificado');
@@ -98,7 +98,7 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-        \yepagu\category::destroy($id);
+        \yepagu\Category::destroy($id);
         Return Redirect::to('admin/categoria');
     }
 }

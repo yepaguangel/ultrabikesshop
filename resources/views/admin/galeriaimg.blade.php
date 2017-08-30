@@ -66,7 +66,12 @@
                                 <div class="valign" style="width: 100%">
                                     {{ Html::image('filegallery/'. $img->claveimg .'.'. $img->extension, $img->nomoriginal, array('class' => 'responsive-img')) }}
                                 </div>
-                                <a class="btn-floating btn-large halfway-fab waves-effect waves-light red"><i class="material-icons">delete</i></a>
+                                {!! Form::open(['route'=>['galeriaimg.destroy', $img->id], 'method'=>'DELETE', 'onsubmit' => 'return confirm("Esta Seguro de Eliminar Esta Imagen ?")']) !!}
+                                <button type="submit" class="btn-floating btn-large halfway-fab waves-effect waves-light red">
+                                    <i class="material-icons">delete</i>
+                                </button>
+                                
+                                {!!Form::close()!!}
                               </div>
                               <div class="card-content">
                                 {!!Form::label('Descripcion Imagen')!!}

@@ -4,6 +4,7 @@ namespace yepagu\Http\Controllers;
 
 use Illuminate\Http\Request;
 use yepagu\Galleryimg;
+use Redirect;
 
 class UploadimageController extends Controller
 {
@@ -55,7 +56,18 @@ class UploadimageController extends Controller
             ]);
     }
 
-    public function edit($id){
+    public function destroy($id){
+        //CONSULTAMOS PARA SABER EL IDUNICO
+        $imagen = Galleryimg::find($id);
+        $fileImage = 'filegallery/' . $imagen->claveimg . '.' . $imagen->extension;
+        //BSUCAMOS IMAGEN PARA ELIMINAR
+        if (file_exists($fileImage))
+        {
+            unlink($fileImage);
+            //BORRAMOS REGISTRO EN BD
+            \yepagu\Galleryimg::destroy($id);
+        }
 
+        Return Redirect::to('admin/galeriaimg');
     }
 }
