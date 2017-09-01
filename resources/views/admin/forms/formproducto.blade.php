@@ -49,7 +49,7 @@
                 <div><i class="material-icons btn btn-flat waves-effect btn-floating hoverable" style="line-height:40px;position: absolute;right: 8px;top:8px;font-size: 2em">close</i><img src="../img/saguaro-300x300.png" alt="Llanta vitoria saguaro"></div>
                 <div><i class="material-icons btn btn-flat waves-effect btn-floating hoverable" style="line-height:40px;position: absolute;right: 8px;top:8px;font-size: 2em">close</i>{{ Html::image('img/saguaro-300x300.png', 'Llanta vitoria saguaro') }}</div>
             </div>
-        	<label>Añade Imágenes de tus productos dando click sobre cada pestaña del carrusel</label>
+        	<label>sf</label>
         </div>
         <div class="file-field input-field col s12" style="float: none">
 	      <div class="file-path-wrapper">
@@ -220,6 +220,22 @@
 			      	</div>
 			      </div>
 			    </li>
+			    <li>
+			    	<div class="collapsible-header active"><i class="material-icons">play_circle_filled</i>Categoria</div>
+			      <div class="collapsible-body">
+			    	<div class="input-field col s12">
+					    <select>
+					      <!--<option value="" disabled selected>Choose your option</option>-->
+					      <option value="1">Disandina</option>
+					      <option value="2">Schwalbe</option>
+					      <option value="3">Medio</option>
+					      <option value="3">Economico</option>
+					      <option value="3">Gratís</option>
+					    </select>
+					    <label>Selecciones el valor del flete</label>
+				    </div>
+				    </div>
+			    </li>
 			 </ul>
         </div>
 	</div>
@@ -240,6 +256,21 @@
 		    	{{ link_to('admin/category/create', $title = 'Nueva Categoria', $attributes = ['class'=>'newbtncategory']) }}
 		    </div>
 	    </div>
+
+	    <!-- fletes -->
+
+	    <div class="input-field col s12">
+		    <select>
+		      <!--<option value="" disabled selected>Choose your option</option>-->
+		      <option value="1">Disandina</option>
+		      <option value="2">Schwalbe</option>
+		      <option value="3">Medio</option>
+		      <option value="3">Economico</option>
+		      <option value="3">Gratís</option>
+		    </select>
+		    <label>Selecciones el valor del flete</label>
+	    </div>
+
 	</div>
 </div>
 <script type="text/javascript">

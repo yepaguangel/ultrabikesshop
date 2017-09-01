@@ -70,4 +70,24 @@ class UploadimageController extends Controller
 
         Return Redirect::to('admin/galeriaimg');
     }
+
+    public function autocomplete($texto)
+    {
+        $result=array();
+        $palabras = explode(" ", $texto);
+        foreach($palabras as $palabra){
+            $data = Galleryimg::where('descrip','LIKE','%'.$palabra.'%')
+            ->take(10)
+            ->get();
+            foreach ($data as $key => $v){
+                $result[] = array('id' => $v->id, 
+                                  'campos' => array('claveimg'=> $v->claveimg, 
+                                                    'extension'=> $v->extension, 
+                                                    'nomoriginal'=> $v->nomoriginal, 
+                                                    'descrip'=> $v->descrip));
+            }
+        }
+        
+        return response()->json($result);
+    }
 }

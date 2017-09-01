@@ -31,6 +31,7 @@ Route::post('admin/file/upload', ['as'=>'file.upload','uses'=>'FilesController@u
 
 Route::resource('admin/producto', 'ProductoController');
 Route::resource('admin/galeriaimg', 'UploadimageController');
+Route::post("admin/galeriaimg/autocompletar/{texto}", 'UploadimageController@autocomplete');
 
 Route::get('admin/producto/filtro/{idcategoria}', 'ProductoController@filtro');
 
@@ -56,6 +57,6 @@ Route::get('login','FrontController@login');
 Route::get('carrito','FrontController@carrito');
 Route::get('registro','FrontController@registro');
 
-Route::resource('carritoagregar/{id}', 'CarritoController@agregar');
+Route::get('carritoagregar/{id}', 'CarritoController@agregar');
  	
 Route::get('logerrors', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
