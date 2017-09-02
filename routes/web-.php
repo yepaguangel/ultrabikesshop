@@ -50,7 +50,6 @@ Route::get('/', function(){ return view('oops'); });
 
 Route::get('detalleproducto/{id}','FrontController@detalleproducto');
 Route::get('ofertas','FrontController@ofertas');
-Route::get('indexdemo','FrontController@indexdemo');
 Route::get('conocenos','FrontController@conocenos');
 Route::get('contactenos','FrontController@contactenos');
 Route::get('micuenta','FrontController@micuenta');

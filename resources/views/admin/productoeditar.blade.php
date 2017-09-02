@@ -102,21 +102,15 @@
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/15309/tableToD3Chart.js"></script>-->
     <script type="text/javascript">
     $(document).ready(function($) {
+
+        $('select').material_select();
         
         $('.collapsible').collapsible();
         $('.parallax').parallax();
         $('.scrollspy').scrollSpy();
         $('.modal').modal();
 
-        Dropzone.options.imageUpload = {
-
-            maxFilesize         :       1,
-
-            acceptedFiles: ".jpeg,.jpg,.png,.gif"
-
-        };
-
-    
+   
 
         //$('.collapsible-header').removeClass('white-text').addClass('active');
         $('.button-collapse').sideNav({
@@ -149,11 +143,11 @@
 
      
         $('#carousel02').owlCarousel({
-	        loop: true,
+	        loop: false,
 	        margin: 10,
 	        autoplayHoverPause: true,
 	        lazyLoad: true,
-	        autoplay: true,
+	        autoplay: false,
 	        //thumbs: true,
 
 	        // When only using images in your slide (like the demo) use this option to dynamicly create thumbnails without using the attribute data-thumb.

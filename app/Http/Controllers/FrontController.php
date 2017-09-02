@@ -22,6 +22,12 @@ class FrontController extends Controller
         $producto = producto::find($id);
         return view('detalleproducto',['producto'=>$producto]); 
     }
+    
+    public function indexdemo()
+    {
+        return view('indexdemo');
+    }
+
 
     public function ofertas()
     {

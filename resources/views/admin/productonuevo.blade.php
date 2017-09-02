@@ -95,7 +95,8 @@
     {!! Html::script('js/owl.carousel.min.js') !!}
     <script type="text/javascript">
     $(document).ready(function($) {
-
+        $('select').material_select();
+        
         $('.collapsible').collapsible();
         $('.parallax').parallax();
         $('.scrollspy').scrollSpy();
@@ -133,7 +134,7 @@
 
      
         $('#carousel02').owlCarousel({
-	        loop: true,
+	        loop: false,
 	        margin: 10,
 	        autoplayHoverPause: true,
 	        lazyLoad: true,

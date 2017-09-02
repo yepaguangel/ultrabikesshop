@@ -9,47 +9,14 @@
                         <div class="row">
                             <div class="input-field col s12">
                                 <i class="material-icons prefix">textsms</i>
-                                <input type="text" id="autocompleteinput" onkeyup="buscar(this)" class="autocomplete">
+                                <input type="text" id="autocompleteinput" onkeyup="buscar()" class="autocomplete">
                                 <label for="autocomplete-input">Buscar Imágenes</label>
                                 <input type="hidden" name="token" value="{{csrf_token()}}" id="token">
                             </div>
                         </div>
                     </div>
                     <div class="col s12" id="panelimg">
-                        <div class="col s6 m4 l3 hoverable" style="padding: 0 0">
-                            <div class="card" style="margin:0 0">
-                                <div class="card-image">
-                                    {{ Html::image('img/saguaro-300x300.png', 'Llanta vitoria saguaro', ['class' => 'responsive-img']) }}
-                                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                                </div>
-                                <div class="card-content">
-                                    <span class="card-title" style="padding: 0 0">Título de la Tarjeta</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col s6 m4 l3 hoverable" style="padding: 0 0">
-                            <div class="card" style="margin:0 0">
-                                <div class="card-image">
-                                    {{ Html::image('img/saguaro-300x300.png', 'Llanta vitoria saguaro', ['class' => 'responsive-img']) }}
-                                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                                </div>
-                                <div class="card-content">
-                                    <span class="card-title" style="padding: 0 0">Título de la Tarjeta</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col s6 m4 l3 hoverable" style="padding: 0 0">
-                            <div class="card" style="margin:0 0">
-                                <div class="card-image">
-                                    {{ Html::image('img/saguaro-300x300.png', 'Llanta vitoria saguaro', ['class' => 'responsive-img']) }}
-                                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                                </div>
-                                <div class="card-content">
-                                    <span class="card-title" style="padding: 0 0">Título de la Tarjeta</span>
-                                </div>
-                            </div>
-                        </div>
-                        
+                        <!-- LISTADO DE IMAGENES -->
                     </div>
                 </div>
             </div>
@@ -60,18 +27,16 @@
     </div>
 </div>
 <script type="text/javascript">
-    
 
-    function buscar(text){
-        VAR html= "<div class='col s6 m4 l3 hoverable' style='padding: 0 0'>lass='card-image' name='image'><a class='btn-floating halfway-fab waves-effect waves-light red'><i class='material-icons'>add</i></a></div><span class='card-title' style='padding: 0 0'>Título de la Tarjeta</span></div>";
-        var texto = text.value;
+    function buscar(){
+        
+        var texto = document.getElementById('autocompleteinput').value;
         if(texto !== '')
         {
             var URLdomain = window.location.host;
             var route = 'http://' + URLdomain + "/admin/galeriaimg/autocompletar/"+ texto;
             var token = document.getElementById('token');
-            console.log(token.value);
-            if(text !== '')
+            if(texto !== '')
             {
                 $.ajax({
                     url: route,
@@ -80,9 +45,14 @@
                     success: function(result)
                     {
                         console.log(result);
+                        var img = '';
+                        var descr = '';
+                        var html = '';
                         $.each(result, function(i, item) {
-                            $('#panelimg').append('<div>AQUI LAS IMAGENES ENCONTADAS</div>');
+                            img = 'http://' + URLdomain + '/filegallery/' + item.campos.claveimg + '.' + item.campos.extension;
+                            html += "<div class='col s6 m4 l3 hoverable' style='padding: 0 0'><div class='card-image'><img src='"+ img +"'><a class='btn-floating halfway-fab waves-effect waves-light red' onclick='agregar("+ JSON.stringify(item) +")'><i class='material-icons'>add</i></a></div><span class='card-title' style='padding: 0 0'>"+ item.campos.descrip +"</span></div>";
                         });
+                        $('#panelimg').html(html);
                     },
                     fail: function(){
                     },
@@ -90,6 +60,16 @@
                     }
                 });
             }
+        }else{
+            $('#panelimg').html('');
         }
+    }
+
+    function agregar(idjson){
+        var carrusel = document.getElementById('carousel02');
+        var URLdomain = window.location.host;
+        var routeImg = 'http://' + URLdomain + "/filegallery/"+ idjson.campos.claveimg + '.'+ idjson.campos.extension;
+        var html = '<div><i class="material-icons btn btn-flat waves-effect btn-floating hoverable" style="line-height:40px;position: absolute;right: 8px;top:8px;font-size: 2em">close</i><img src="'+ routeImg +'"></div>';
+        carrusel.innerHTML += html;
     }
 </script>

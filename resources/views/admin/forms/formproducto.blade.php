@@ -41,21 +41,10 @@
                 	<i class="material-icons btn btn-flat waves-effect btn-floating hoverable" style="line-height:40px;position: absolute;right: 8px;top:8px;font-size: 2em">close</i>
                 	{{ HTML::image('img/saguaro-300x300.png', 'Llanta vitoria saguaro') }}
                 </div>
-                <div><i class="material-icons btn btn-flat waves-effect btn-floating hoverable" style="line-height:40px;position: absolute;right: 8px;top:8px;font-size: 2em">close</i>{{ Html::image('img/saguaro-300x300.png', 'Llanta vitoria saguaro') }}</div>
-                <div><i class="material-icons btn btn-flat waves-effect btn-floating hoverable" style="line-height:40px;position: absolute;right: 8px;top:8px;font-size: 2em">close</i><img src="../img/saguaro-300x300.png" alt="Llanta vitoria saguaro"></div>
-                <div><i class="material-icons btn btn-flat waves-effect btn-floating hoverable" style="line-height:40px;position: absolute;right: 8px;top:8px;font-size: 2em">close</i>{{ Html::image('img/saguaro-300x300.png', 'Llanta vitoria saguaro') }}</div>
-                <div><i class="material-icons btn btn-flat waves-effect btn-floating hoverable" style="line-height:40px;position: absolute;right: 8px;top:8px;font-size: 2em">close</i><img src="../img/saguaro-300x300.png" alt="Llanta vitoria saguaro"></div>
-                <div><i class="material-icons btn btn-flat waves-effect btn-floating hoverable" style="line-height:40px;position: absolute;right: 8px;top:8px;font-size: 2em">close</i>{{ Html::image('img/saguaro-300x300.png', 'Llanta vitoria saguaro') }}</div>
-                <div><i class="material-icons btn btn-flat waves-effect btn-floating hoverable" style="line-height:40px;position: absolute;right: 8px;top:8px;font-size: 2em">close</i><img src="../img/saguaro-300x300.png" alt="Llanta vitoria saguaro"></div>
-                <div><i class="material-icons btn btn-flat waves-effect btn-floating hoverable" style="line-height:40px;position: absolute;right: 8px;top:8px;font-size: 2em">close</i>{{ Html::image('img/saguaro-300x300.png', 'Llanta vitoria saguaro') }}</div>
             </div>
-        	<label>sf</label>
+        	<label>LABEL</label>
         </div>
-        <div class="file-field input-field col s12" style="float: none">
-	      <div class="file-path-wrapper">
-	        <input class="file-path validate" type="text">
-	      </div>
-	    </div>
+
 	     @include('admin.forms.modalimagenes')
 	     <!--
        	<nav>
@@ -212,7 +201,7 @@
 			      </div>
 			    </li>
 			    <li>
-			      <div class="collapsible-header active"><i class="material-icons">play_circle_filled</i>Categoria</div>
+			      <div class="collapsible-header"><i class="material-icons">comment</i>Categoria</div>
 			      <div class="collapsible-body">
 			      	<div class="input-field">
 			      		{!!Form::label('Codigo de Categoria (Seleccione del Listado)')!!}
@@ -221,19 +210,11 @@
 			      </div>
 			    </li>
 			    <li>
-			    	<div class="collapsible-header active"><i class="material-icons">play_circle_filled</i>Categoria</div>
-			      <div class="collapsible-body">
-			    	<div class="input-field col s12">
-					    <select>
-					      <!--<option value="" disabled selected>Choose your option</option>-->
-					      <option value="1">Disandina</option>
-					      <option value="2">Schwalbe</option>
-					      <option value="3">Medio</option>
-					      <option value="3">Economico</option>
-					      <option value="3">Gratís</option>
-					    </select>
-					    <label>Selecciones el valor del flete</label>
-				    </div>
+			    	<div class="collapsible-header"><i class="material-icons">card_membership</i>Flete</div>
+			      	<div class="collapsible-body">
+				    	<div class="input-field">
+						    {{ Form::select('flete', ['Disandina', 'Schwalbe', 'Medio', 'Economico', 'Gratis']) }}
+					    </div>
 				    </div>
 			    </li>
 			 </ul>

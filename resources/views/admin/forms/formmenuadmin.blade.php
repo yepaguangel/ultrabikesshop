@@ -5,9 +5,9 @@
                 <div class="background">
                     {{ Html::image('img/ub-sidenav.jpg') }}
                 </div>
-                <a href="#!user">{{ Html::image('admin/img/myprofile.png', 'Picture Profile', array('class' => 'circle')) }}</a>
-                <a href="#!name"><span class="white-text name"><font><font>Armando Rubio</font></font></span></a>
-                <a href="#!email"><span class="white-text email"><font><font>info@faroweb.com.co</font></font></span></a>
+                <a href="#!user">{{ Html::image('http://ultrabikesshop.com/img/new-user.png', 'Picture Profile', array('class' => 'circle')) }}</a>
+                <a href="#!name"><span class="white-text name"><font><font>Jorge Corona</font></font></span></a>
+                <a href="#!email"><span class="white-text email"><font><font>info@ultrabikesshop.com</font></font></span></a>
             </div>
         </li>
         <!--<li><a href="#!">Estadisticas Generales</a></li>-->
@@ -50,7 +50,7 @@
         {{ link_to('admin/categoria/', $title = 'Categoria', $attributes = ['class'=>'white-text']) }}
         </li>
         <li>
-        {{ link_to('admin/galeriaimg/', $title = 'Galeria', $attributes = ['class'=>'white-text']) }}
+            {{ link_to('admin/galeriaimg/', $title = 'Galeria', $attributes = ['class'=>'white-text']) }}
         </li>
     </ul>
     <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
