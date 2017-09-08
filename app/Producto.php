@@ -10,6 +10,6 @@ class Producto extends Model
 
     public $timestamps = false;
     
-    protected $fillable = ['referencia', 'nombre', 'precioalmacen', 'preciopublico', 'linea', 'stock', 'marca', 'idcategoria', 'tamano', 'color', 'oferta', 'descripcion','anotaciones', 'multimedia', 'flete'];
+    protected $fillable = ['referencia', 'nombre', 'preciopublico', 'linea', 'stock', 'marca', 'idcategoria', 'tamano', 'color', 'oferta', 'descripcion','anotaciones', 'multimedia', 'imagen', 'flete'];
     
 }

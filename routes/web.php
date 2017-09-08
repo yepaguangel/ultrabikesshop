@@ -21,11 +21,7 @@ use yepagu\Producto;
 
 
 Route::resource('/admin/login', 'LoginController');
-
-Route::get('admin/principal', function(){
-	return view('admin.index');
-});
-
+Route::get('admin/principal', 'PrincipalController@index');
 Route::resource('admin/file', 'FilesController');
 Route::post('admin/file/upload', ['as'=>'file.upload','uses'=>'FilesController@upload']);
 
@@ -37,18 +33,10 @@ Route::get('admin/producto/filtro/{idcategoria}', 'ProductoController@filtro');
 
 Route::resource('admin/categoria', 'CategoriaController');	
 
-Route::get('detalleproducto', function () {
-	$usuarioList = Usuario::where('nip','123')->first();
-	echo $usuarioList->nip;
-	//print_r($usuarioList);
-	//dd($usuarioList);
-});
+//Route::get('/', function(){ return view('oops'); });
 
-
-Route::get('/', function(){ return view('oops'); });
-
-
-Route::get('detalleproducto/{id}','FrontController@detalleproducto');
+Route::get('/', 'FrontController@index');
+Route::get('detalleproducto/{id}/{nombre}','FrontController@detalleproducto');
 Route::get('ofertas','FrontController@ofertas');
 Route::get('indexdemo','FrontController@indexdemo');
 Route::get('conocenos','FrontController@conocenos');
@@ -61,3 +49,5 @@ Route::get('registro','FrontController@registro');
 Route::get('carritoagregar/{id}', 'CarritoController@agregar');
  	
 Route::get('logerrors', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+
+Route::get('/indexreal', 'FrontController@index');

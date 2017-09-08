@@ -7,6 +7,9 @@
 	{!! Html::style('css/materialize.min.css') !!}
     {!! Html::style('css/owl.carousel.min.css') !!}
     {!! Html::style('css/tabs-vertical.css') !!}
+
+    {!! Html::script('js/jquery-2.1.1.min.js') !!}
+
     <!--<link href="css/c3.css" rel="stylesheet">-->
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/icon?family=Material+Icons">
     <style type="text/css" media="screen">
@@ -90,9 +93,11 @@
             </div>
         </div>
     </div>
-    {!! Html::script('js/jquery-2.1.1.min.js') !!}
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
     {!! Html::script('js/owl.carousel.min.js') !!}
+    
+
     <script type="text/javascript">
     $(document).ready(function($) {
         $('select').material_select();

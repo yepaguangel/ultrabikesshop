@@ -34,9 +34,12 @@ class ProductoController extends Controller
     public function create()
     {
         $categorias = Category::all();
-        $productos = Producto::all();
+        $producto = Producto::all();
         $galerias = Galleryimg::all();
-        Return view('admin.productonuevo', compact('categorias','productos','galerias'));
+        $imagenesProd = array();
+        $producto->imagen = 0;
+        $producto->idcategoria = 0;
+        Return view('admin.productonuevo', compact('categorias','producto','galerias','imagenesProd'));
     }
 
     /**
@@ -58,10 +61,12 @@ class ProductoController extends Controller
             'categoria'=> $request['categoria'],
             'tamano'=> $request['tamano'],
             'color'=> $request['color'],
+            'imagen'=> $request['imagen'],
             'oferta'=> $request['oferta'],
             'descripcion'=> $request['descripcion'],
             'anotaciones'=> $request['anotaciones'],
-            'multimedia'=> $request['multimedia']
+            'multimedia'=> $request['multimedia'],
+            'flete'=> $request['flete'],
             ]);
         return Redirect::to('admin/producto');
     }
@@ -88,7 +93,9 @@ class ProductoController extends Controller
         $producto = Producto::find($id);
         $categorias = Category::all();
         $galerias = Galleryimg::all();
-        Return view('admin.productoeditar',['producto'=>$producto], compact('categorias','galerias'));
+        $imagenesProd = Galleryimg::whereIn('id', explode(',', $producto->imagen) )->get();
+        
+        Return view('admin.productoeditar',['producto'=>$producto], compact('categorias','galerias','imagenesProd'));
     }
 
     /**

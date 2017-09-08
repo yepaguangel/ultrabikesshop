@@ -7,6 +7,7 @@
     {!! Html::style('css/materialize.min.css') !!}
     {!! Html::style('css/owl.carousel.min.css') !!}
     {!! Html::style('css/tabs-vertical.css') !!}
+    {!! Html::script('js/jquery-2.1.1.min.js') !!}
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.css">
     <style type="text/css" media="screen">
@@ -93,7 +94,7 @@
         </div>
     </div>
 
-    {!! Html::script('js/jquery-2.1.1.min.js') !!}
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
     {!! Html::script('js/owl.carousel.min.js') !!}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>

@@ -44,13 +44,12 @@
                     method: "POST",
                     success: function(result)
                     {
-                        console.log(result);
                         var img = '';
                         var descr = '';
                         var html = '';
                         $.each(result, function(i, item) {
                             img = 'http://' + URLdomain + '/filegallery/' + item.campos.claveimg + '.' + item.campos.extension;
-                            html += "<div class='col s6 m4 l3 hoverable' style='padding: 0 0'><div class='card-image'><img src='"+ img +"'><a class='btn-floating halfway-fab waves-effect waves-light red' onclick='agregar("+ JSON.stringify(item) +")'><i class='material-icons'>add</i></a></div><span class='card-title' style='padding: 0 0'>"+ item.campos.descrip +"</span></div>";
+                            html += "<div class='col s6 m4 l3 hoverable' style='padding: 0 0'><div class='card-image valign-wrapper' style='height:220px'><div class='valign' style='width:100%'><img class='responsive-img' src='"+ img +"'></div><a class='btn-floating halfway-fab waves-effect waves-light red' onclick='agregar("+ JSON.stringify(item) +")'><i class='material-icons'>add</i></a></div><span class='card-title' style='padding: 0 0'>" + item.campos.descrip +"</span></div>";
                         });
                         $('#panelimg').html(html);
                     },
@@ -66,10 +65,24 @@
     }
 
     function agregar(idjson){
-        var carrusel = document.getElementById('carousel02');
         var URLdomain = window.location.host;
         var routeImg = 'http://' + URLdomain + "/filegallery/"+ idjson.campos.claveimg + '.'+ idjson.campos.extension;
-        var html = '<div><i class="material-icons btn btn-flat waves-effect btn-floating hoverable" style="line-height:40px;position: absolute;right: 8px;top:8px;font-size: 2em">close</i><img src="'+ routeImg +'"></div>';
-        carrusel.innerHTML += html;
+        var html = '<div id="'+ idjson.id +'"><i class="material-icons btn btn-flat waves-effect btn-floating hoverable" style="line-height:40px;position: absolute;right: 8px;top:8px;font-size: 2em">close</i><img src="'+ routeImg +'"></div>';
+        //RECORREMOS ARRAY DEL CAMPO DE TEXTO OCULTO, SI NO ESTA... AGREGAMOS
+        var arrayText = $('#imagen').val().split(',');
+        var flag = jQuery.inArray( idjson.id, arrayText);
+        console.log(flag);
+        if(flag === -1){ //NO ENCUNTRA EL ID, AGREGAMOS
+            $('#carousel02')
+              .owlCarousel('add', html)
+              .owlCarousel('update');
+            arrayText.push(idjson.id);
+            $('#imagen').val(arrayText);
+            Materialize.toast('Imagen agregada a producto', 2000);
+        }
     }
+
+    
+
+    
 </script>

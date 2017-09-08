@@ -19,12 +19,9 @@
                         <div class="card-panel left-align" style="position: relative;overflow:hidden">
                             <div class="row filtermenu">
                                 <div class="col s8 m9 contmenubanner" style="display: table-cell;overflow-x: auto;transition: all linear .2s;padding: 0 0">
-                                    <a class="waves-effect white black-text waves-orange btn" style="display: table-cell;">MTB</a>
-                                    <a class="waves-effect white black-text waves-orange btn" style="display: table-cell;">Ruta</a>
-                                    <a class="waves-effect white black-text waves-orange btn" style="display: table-cell;">Híbrida</a>
-                                    <a class="waves-effect white black-text waves-orange btn" style="display: table-cell;">DOWNHILL</a>
-                                    <a class="waves-effect white black-text waves-orange btn" style="display: table-cell;">BMX</a>
-                                    <a class="waves-effect white black-text waves-orange btn" style="display: table-cell;">ACCESORIOS</a>
+                                    @foreach($categoriaLimit as $catlim)
+                                    {{ link_to('categoria/'. $catlim->id.'/'.$catlim->nombrecategoria, $title =  $catlim->nombrecategoria, $attributes = ['class'=>'waves-effect white black-text waves-orange btn']) }}
+                                    @endforeach
                                 </div>
                                 <div class="col s4 m3 right-align btn-large-search" style="padding: 0 0">
                                     <a href="#filternav" class="waves-effect waves-orange btn white black-text btn-search" style="text-align: right" type="submit" name="action">Buscar
@@ -168,11 +165,14 @@
     </div>
     <div class="wall">
         @foreach($productos as $prodind)
+            
         <div class="card article">
             <div class="card-image" style="position: relative;">
+                <div class="hide">{{ $imagen = getImage($prodind->imagen) }}</div>
                 <a class="waves-effect waves-light btn animated show-ray" href="#modal1">Vista Rapida</a>
                 <span class="new badge" data-badge-caption="" style="position: absolute;right: 9px;top: 9px;z-index: 10">29*2.0</span>
-                <img src="img/saguaro-300x300.png">
+                
+                {{ Html::image('filegallery/'.$imagen->claveimg.'.'.$imagen->extension, $imagen->nombre) }}
                 <span class="card-title">{{str_limit($prodind->nombre, $limit = 25, $end = '...')}}</span>
                 <a class="btn-floating halfway-fab waves-effect waves-light red tooltipped" data-position="top" data-delay="50" data-tooltip="Añadir al Carrito"><i class="material-icons">add_shopping_cart</i></a>
             </div>
@@ -182,7 +182,7 @@
                 <h5>${{$prodind->preciopublico}}</h5>
             </div>
             <div class="card-action">
-                {{ link_to('detalleproducto/'.$prodind->id, $title = 'Ver Detalle', $attributes = ['class'=>'waves-effect waves-light btn orange darken-3 white-text']) }}
+                {{ link_to('detalleproducto/'.$prodind->id.'/'.str_slug($prodind->nombre, '-'), $title = 'Ver Detalle', $attributes = ['class'=>'waves-effect waves-light btn orange darken-3 white-text']) }}
                 <a href="#" class="waves-effect waves-light btn orange darken-3 white-text">Comprar</a>
             </div>
         </div>
@@ -207,9 +207,11 @@
         <div class="col s12" style="position:relative;z-index: 8">
             <div id="carousel01" class="owl-carousel owl-theme">
                 @foreach($masvendidos as $masv)
+                    
                 <div class="item card waves-effect waves-light itemtop">
                     <div class="card-image">
-                        <img src="img/saguaro-300x300.png">
+                        <div class="hide">{{ $imagen = getImage($masv->imagen) }}</div>
+                        {{ Html::image('filegallery/'.$imagen->claveimg.'.'.$imagen->extension, $imagen->nombre) }}
                         <div class="fixed-action-btn vertical click-to-toggle">
                             <a class="btn-floating btn-large halfway-fab waves-effect waves-light red">
                                         <i class="material-icons">add</i>
@@ -217,7 +219,8 @@
                             <ul>
                                 <li>
                                 {{ link_to('detalleproducto/'.$prodind->id, $title = 'Ver Detalle', $attributes = ['class'=>'btn-floating red tooltipped', 'data-position'=>'left', 'data-delay'=>'50', 'data-tooltip'=>'Añadir al carrito']) }}
-                                <a class="btn-floating red tooltipped" ><i class="material-icons">shopping_cart</i></a></li>
+                                <a class="btn-floating red tooltipped" ><i class="material-icons">shopping_cart</i></a>
+                                </li>
                                 <li><a class="btn-floating orange darken-1 tooltipped" data-position="left" data-delay="50" data-tooltip="Ver Descripción"><i class="material-icons">info</i></a></li>
                             </ul>
                         </div>

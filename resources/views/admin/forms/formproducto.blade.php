@@ -37,12 +37,17 @@
 	<div class="col s12 m4">
 		<div class="card">
     		<div id="carousel02" class="owl-carousel">
-                <div>
+
+                @foreach($imagenesProd as $imgpro)
+                <div id="{{$imgpro->id}}">
                 	<i class="material-icons btn btn-flat waves-effect btn-floating hoverable" style="line-height:40px;position: absolute;right: 8px;top:8px;font-size: 2em">close</i>
-                	{{ HTML::image('img/saguaro-300x300.png', 'Llanta vitoria saguaro') }}
+                	{{ HTML::image('filegallery/'.$imgpro->claveimg.'.'.$imgpro->extension, $imgpro->descrip) }}
+                	<label>{{$imgpro->descrip}}</label>
                 </div>
+                @endforeach
+
             </div>
-        	<label>LABEL</label>
+            {{ Form::hidden('imagen', $producto->imagen, array('id'=>'imagen')) }}
         </div>
 
 	     @include('admin.forms.modalimagenes')
@@ -81,15 +86,6 @@
 			      </div>
 			    </li>
 			    <li>
-			      <div class="collapsible-header"><i class="material-icons">attach_money</i>Precio Almacen</div>
-			      <div class="collapsible-body">
-			      	<div class="input-field">
-			      		{!!Form::label('Digite el precio sin puntos ni comas')!!}
-						{!!Form::text('precioalmacen',null,array('required' => 'required'))!!}
-			      	</div>
-			      </div>
-			    </li>
-			    <li>
 			      <div class="collapsible-header"><i class="material-icons">attach_money</i>Precio Público</div>
 			      <div class="collapsible-body">
 			      	<div class="input-field">
@@ -119,42 +115,41 @@
 			    <li class="disable">
 			      <div class="collapsible-header"><i class="material-icons">invert_colors</i>Colores</div>
 			      <div class="collapsible-body">
-			      	<div id="carousel03" class="owl-carousel colorcarousel">
-			      		<div class="itemcarru card center" style="padding: 0 0;position: relative;">
-			      			<img src="../img/bomba-amarilla.jpg" alt="" class="responsive-img" style="position: absolute;left:0">
-			      			<div class="file-field input-field center" style="display: inline-block;margin: 0 0;float: none;background-color: transparent;">
-						      <div class="btn btn-floating tooltipped" data-position="top" data-delay="50" data-tooltip="subir imágen de color" style="min-width: 45px;display: inline-block;float: none">
-						        <span>+</span>
-						        <input type="file" multiple>
-						      </div>
-						      <div class="file-path-wrapper col s12" style="padding: 0 0;margin: 0 0">
-						        <input class="file-path validate" type="text" placeholder="" style="height: inherit !important;font-size: .8em !important;margin-top:20px">
-						      </div>
-						    </div>
-			      		</div>
-			      		<div class="itemcarru card center" style="padding: 0 0;position: relative;">
-			      			<div class="valign-wrapper" style="padding: 0 0;height: 100%;width: 100%">
-			      				<div class="valign center" style="width: 100%">
-			      					<a href="#" class="btn btn-floating tooltipped" data-position="top" data-delay="50" data-tooltip="Añadir Color">+</a>
-			      				</div>
-			      			</div>
-			      		</div>
+			      	
+			      	<div id="inputs" class="row">
+				      	<div class="input-field col s12 m12">
+				      		<label>Color</label>
+				      		<input type="text" name="txtTexCol" id="txtTexCol" value="">
+				      	</div>
+				      	<a href="#" class="btn btn-flat waves-effect waves-teal" onClick="addColor()" style="text-transform: capitalize;padding-left: 8px;padding-right: 8px">+ Añadir Color</a>
 			      	</div>
-			      	<label>Recomendación: tamaño de imágen min-max de 80px X 80px</label>
-			      	<div class="col s12" style="border:1px dashed #f00;display: block;float: none">
-			      		<label>NOTA YEISSON: La idea principal es que si no existe ningun otro color se muestre el btn de añadir color y si añaden otros colores este boton de añadir debe quedar de ultimo.</label>	
+			      	<div class="row">
+			      		<ul class="collection" id="collec2"></ul>
 			      	</div>
+			      	{!!Form::hidden('color',null, array('id'=>'color'))!!}
+			      	
 			      </div>
 			    </li>
 			    <li>
 			      <div class="collapsible-header"><i class="material-icons">photo_size_select_small</i>Medidas</div>
 			      <div class="collapsible-body">
-			      	<div class="input-field">
-			      		<label>Medidas Disponibles</label>
-			      		<input type="text" name="" value="">
-			      		<a href="#" class="btn btn-flat waves-effect waves-teal" style="text-transform: capitalize;padding-left: 8px;padding-right: 8px">+ Añadir medida</a>
+			      	<div id="inputs" class="row">
+				      	<div class="input-field col s12 m6">
+				      		<label>Medida</label>
+				      		<input type="text" name="txtTexMed" id="txtTexMed" value="">
+				      	</div>
+				      	<div class="input-field col s12 m6">
+				      		<label>Precio</label>
+				      		<input type="text" name="txtPreMed" id="txtPreMed" value="">
+				      	</div>
+				      	<a href="#" class="btn btn-flat waves-effect waves-teal" onClick="addMedida()" style="text-transform: capitalize;padding-left: 8px;padding-right: 8px">+ Añadir medida</a>
 			      	</div>
+			      	<div class="row">
+			      		<ul class="collection" id="colec1"></ul>
+			      	</div>
+			      	{!!Form::hidden('tamano',null, array('id'=>'tamano'))!!}
 			      </div>
+			       
 			    </li>
 			    <li>
 			      <div class="collapsible-header"><i class="material-icons">store</i>Cantidad en Stock</div>
@@ -204,8 +199,11 @@
 			      <div class="collapsible-header"><i class="material-icons">comment</i>Categoria</div>
 			      <div class="collapsible-body">
 			      	<div class="input-field">
-			      		{!!Form::label('Codigo de Categoria (Seleccione del Listado)')!!}
-						{!!Form::text('idcategoria',null,array('required' => 'required'))!!}
+						<select name="idcategoria">
+							@foreach($categorias as $categoria)
+							<option value="{{ $categoria->id }}" {{ $categoria->id == $producto->idcategoria ? 'selected="selected"' : '' }}>{{strtoupper($categoria->nombrecategoria)}}</option>
+			    			@endforeach
+						</select>
 			      	</div>
 			      </div>
 			    </li>
@@ -229,7 +227,7 @@
 		<div class="card">
     		<div class="collection" style="max-height: 380px;overflow-y: auto">
     			@foreach($categorias as $categoria)
-    				<a href="javascript:void(0)" onclick="agregarCateg('{{ $categoria->id}}')" class="collection-item">{{strtoupper($categoria->nombrecategoria)}}</a>
+    				<a href="javascript:void(0)" class="collection-item">{{strtoupper($categoria->nombrecategoria)}}</a>
     			@endforeach
 		    </div>
 		    <div class="card-action">
@@ -238,28 +236,100 @@
 		    </div>
 	    </div>
 
-	    <!-- fletes -->
-
-	    <div class="input-field col s12">
-		    <select>
-		      <!--<option value="" disabled selected>Choose your option</option>-->
-		      <option value="1">Disandina</option>
-		      <option value="2">Schwalbe</option>
-		      <option value="3">Medio</option>
-		      <option value="3">Economico</option>
-		      <option value="3">Gratís</option>
-		    </select>
-		    <label>Selecciones el valor del flete</label>
-	    </div>
-
 	</div>
 </div>
 <script type="text/javascript">
+	listarColor();
+	listarMedida();
 
 	function agregarCateg(num){
 		var x = document.getElementsByName("idcategoria")[0];
 		x.value=num;
     }
 
+	$(document).ready(function($) {
+		$('#carousel02').on('click', '.owl-item', function(e) {
+			//REMOVEMOS ITEM DEL CARRUSEL
+			var carousel = $('#carousel02').data('owl.carousel');
+			e.preventDefault();
+			$("#carousel02").trigger('remove.owl.carousel', [$(this).index()]).trigger('refresh.owl.carousel');
+			//REMOVEMOS ITEM DEL CAMPO DE TEXTO OCULTO 
+			var id = $("#carousel02 .owl-item.active div").attr('id');
+			var y = $('#imagen').val().split(',');
+			y.splice( $.inArray(id, y), 1 );
+			$('#imagen').val(y);
+			Materialize.toast('Imagen eliminada del producto, Cod: '+id, 2000);
+        });
 
-</script>
+    });
+
+    function listarMedida()
+    {
+
+		$("ul#colec1").empty();
+    	var arrayText = [];
+		if( $('#tamano').val() !== '') arrayText = JSON.parse( $('#tamano').val() );
+		jQuery.each(arrayText, function(i, val) {
+		   	$("ul#colec1").append('<li class="collection-item">'+ val.med +' + '+ val.pre +'<a href="#" onClick="deleteMedida('+ i +')" class="secondary-content"><i class="material-icons">delete</i></a></li>');
+		});
+    }
+
+	function addMedida(){
+		if( $('#txtPreMed').val()!=='' && $('#txtTexMed').val()!=='' )
+		{
+			var arrayText = [];
+			if( $('#tamano').val() !== '') arrayText = JSON.parse( $('#tamano').val() );
+			var data = {};
+			data.med = $('#txtTexMed').val();
+			data.pre = $('#txtPreMed').val();
+			arrayText.push(data);
+			$('#tamano').val( JSON.stringify(arrayText) );
+		}
+		$('#txtPreMed, #txtTexMed').val('');
+		listarMedida();
+	}
+
+	function deleteMedida(indexArray)
+	{
+		var arrayText = JSON.parse( $('#tamano').val() );
+		var deleteItem = arrayText.splice(indexArray,1);
+		$('#tamano').val( JSON.stringify(arrayText) );
+		listarMedida();
+	}
+
+	//---------------------
+
+	function listarColor()
+    {
+
+		$("ul#collec2").empty();
+
+    	var arrayText = [];
+		if( $('#color').val() !== '') arrayText = JSON.parse( $('#color').val() );
+		jQuery.each(arrayText, function(i, val) {
+		   	$("ul#collec2").append('<li class="collection-item">'+ val.color + '<a href="#" onClick="deleteColor('+ i +')" class="secondary-content"><i class="material-icons">delete</i></a></li>');
+		});
+    }
+
+	function addColor(){
+		if( $('#txtTexCol').val()!=='' )
+		{
+			var arrayText = [];
+			if( $('#color').val() !== '') arrayText = JSON.parse( $('#color').val() );
+			var data = {};
+			data.color = $('#txtTexCol').val();
+			arrayText.push(data);
+			$('#color').val( JSON.stringify(arrayText) );
+		}
+		$('#txtTexCol').val('');
+		listarColor();
+	}
+
+	function deleteColor(indexArray)
+	{
+		var arrayText = JSON.parse( $('#color').val() );
+		var deleteItem = arrayText.splice(indexArray,1);
+		$('#color').val( JSON.stringify(arrayText) );
+		listarColor();
+	}
+	</script>

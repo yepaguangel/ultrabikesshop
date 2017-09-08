@@ -14,10 +14,12 @@ class FrontController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){ 
-        $productos = producto::inRandomOrder()->limit(8)->get();
-        $masvendidos = producto::inRandomOrder()->limit(8)->get();
-        return view('index', compact('productos','masvendidos')); 
+        $productos = Producto::inRandomOrder()->limit(8)->get();
+        $masvendidos = Producto::inRandomOrder()->limit(8)->get();
+        $categoriaLimit = Category::limit(6)->get();
+        return view('index', compact('productos','masvendidos', 'categoriaLimit')); 
     }
+
     public function detalleproducto($id){ 
         $producto = producto::find($id);
         return view('detalleproducto',['producto'=>$producto]); 
