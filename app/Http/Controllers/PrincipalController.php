@@ -9,7 +9,7 @@ class PrincipalController extends Controller
 {
 	public function index(){
 		$fletes = Flete::all();
-		 return view('admin.index',['fletes'=>$fletes]); 
+		return view('admin.index',['fletes'=>$fletes]); 
 	}
 }
    

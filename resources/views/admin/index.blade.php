@@ -48,22 +48,14 @@
                     <div class="col s12">
                         <div class="card col s12">
                             <blockquote><p>Valores de envío</p></blockquote>
-                            <div class="col s6 m6 l3 input-field">
-                                <label>Disandina</label>
-                                <input type="text" name="Disandina">
+                            @foreach($fletes as $flete)
+                            <div class="col s6 m6 13 input-field">
+                                <label>{{$flete->titulo}}</label>
+                                {!!Form::text('flete_'.$flete->id, $flete->valor, array('id'=>'flete_'.$flete->id, 'onblur'=>'actFlete('.$flete->id.')'))!!}
                             </div>
-                            <div class="col s6 m6 l3 input-field">
-                                <label>Schwalbe</label>
-                                <input type="text" name="Disandina">
-                            </div>
-                            <div class="col s6 m6 l3 input-field">
-                                <label>Mediano</label>
-                                <input type="text" name="Disandina">
-                            </div>
-                            <div class="col s6 m6 l3 input-field">
-                                <label>Económico</label>
-                                <input type="text" name="Disandina">
-                            </div>
+                            @endforeach
+                            
+                            <input type="hidden" name="token" value="{{csrf_token()}}" id="token">
                         </div>
                     </div>
                     <div class="col s12 m7" style="height: 100%;">
@@ -479,9 +471,41 @@
 	        	
         	}
         });
+
+
    
 
     });
+    function actFlete(id){
+        var URLdomain = window.location.host;
+        var route = 'http://' + URLdomain + "/admin/flete/" + id;
+        var token = document.getElementById('token');
+        if($('#flete_'+id) !== '')
+        {
+             $.ajax({
+                url: route,
+                headers: {'X-CSRF-TOKEN':token.value},
+                data: {valor:$('#flete_'+id).val()},
+                dataType: "json",
+                method: "PUT",
+                success: function(result)
+                {
+                    if (result.msg == 'ok')
+                    {
+                        console.log('Dato Actualizado')
+                    }
+                    else
+                    {
+                        alert('!Ups Lo Sentimos, Ocurrio un problema al actualizar datos');
+                    }
+                },
+                fail: function(){
+                },
+                beforeSend: function(){
+                }
+            });
+        }
+    }
     </script>
 </body>
 

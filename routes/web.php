@@ -26,6 +26,7 @@ Route::resource('admin/file', 'FilesController');
 Route::post('admin/file/upload', ['as'=>'file.upload','uses'=>'FilesController@upload']);
 
 Route::resource('admin/producto', 'ProductoController');
+Route::resource('admin/flete', 'FleteController');
 Route::resource('admin/galeriaimg', 'UploadimageController');
 Route::post("admin/galeriaimg/autocompletar/{texto}", 'UploadimageController@autocomplete');
 
