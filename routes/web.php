@@ -26,6 +26,7 @@ Route::resource('admin/file', 'FilesController');
 Route::post('admin/file/upload', ['as'=>'file.upload','uses'=>'FilesController@upload']);
 
 Route::resource('admin/producto', 'ProductoController');
+Route::get('admin/producto/delete/{id}', ['as' => 'producto.delete', 'uses' => 'ProductoController@destroy']);
 Route::resource('admin/flete', 'FleteController');
 Route::resource('admin/galeriaimg', 'UploadimageController');
 Route::post("admin/galeriaimg/autocompletar/{texto}", 'UploadimageController@autocomplete');
@@ -35,8 +36,8 @@ Route::get('admin/producto/filtro/{idcategoria}', 'ProductoController@filtro');
 Route::resource('admin/categoria', 'CategoriaController');	
 
 //Route::get('/', function(){ return view('oops'); });
-
-Route::get('/', 'FrontController@index');
+Route::get('/', function(){ return view('oops'); });
+Route::get('/indexreal', 'FrontController@index');
 Route::get('detalleproducto/{id}/{nombre}','FrontController@detalleproducto');
 Route::get('ofertas','FrontController@ofertas');
 Route::get('indexdemo','FrontController@indexdemo');

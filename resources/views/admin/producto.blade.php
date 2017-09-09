@@ -98,24 +98,31 @@
 					    <table class="bordered">
 					        <thead>
 					          <tr>
-					          	<th class="center tooltipped" data-position="top" data-delay="50" data-tooltip="seleccionar todos"><input type="checkbox" id="test1" /><label for="test1"></label></th>
+					          	<th class="center tooltipped" data-position="top" data-delay="50" data-tooltip="seleccionar todos"><input type="checkbox" id="all"/><label for="all"></label></th>
 					          	<th>Referencia</th>
 					            <th>Producto</th>
 					            <th>En Stock</th>
 					            <th>Precio</th>
-					            <th></th>
+					            <th>Actualizar</th>
+                                <th>Eliminar</th>
 					          </tr>
 					        </thead>
                             @foreach($productos as $producto)
 					        <tbody>
 					          <tr>
-					          	<td class="center"><input type="checkbox" id="test2" /><label for="test2"></label></td>
+					          	<td class="center">
+                                    <input class="item" type="checkbox" id="test{{$producto->id}}" />
+                                    <label for="test{{$producto->id}}"></label>
+                                </td>
 					            <td>{{$producto->referencia}}</td>
 					            <td><span class="truncate nameproduct">{{$producto->nombre}}</span></td> 
 					            <td><i class="material-icons">check</i></td>
 					            <td>{{$producto->preciopublico}}</td>
 					            <td>
                                 {!!link_to_route('producto.edit', $title = 'Modificar', $parameters = $producto->id , $attributes = ['class'=>'btn waves-effect waves-teal'])!!}
+                                </td>
+                                <td>
+                                    <a href="{{ route('producto.delete', $producto->id) }}" onclick="return confirm('Esta seguro de eliminar este producto?')"> <i class="material-icons">delete_forever</i></a>
                                 </td>
 					          </tr>
                             </tbody>
@@ -134,6 +141,12 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/c3/0.1.29/c3.min.js"></script>
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/15309/tableToD3Chart.js"></script>-->
     <script type="text/javascript">
+    $(function(){
+        $("#all").click(function () {
+              $('.item').prop('checked', this.checked);
+        });
+    });
+
     $(document).ready(function($) {
 
         $('.collapsible').collapsible();

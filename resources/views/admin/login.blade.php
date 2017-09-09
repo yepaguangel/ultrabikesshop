@@ -27,6 +27,7 @@
 		<div class="parallax-container" style="position: absolute;width: 100%;height: 100%;left: 0;top:0">
       		<div class="parallax"><img src="../img/bg-bannerutbs.jpg"></div>
     	</div>
+    	
 		<div class="container valign-wrapper" style="min-height: 100vh">
 			<div class="row valign center">
 				<div class="col s12 m6" style="display: inline-block;float: none;min-width: 350px;max-width: 100%">
@@ -46,7 +47,7 @@
 								{!!Form::password('password',null,['class'=>'validate'])!!}
 							</div>
 							<div class="col s12">
-								<button id="registrarBtn" class="waves-effect orange darken-1 btn" type="submit"> Registrar </buttton>
+								<button id="registrarBtn" class="waves-effect orange darken-1 btn" type="submit"> Ingresar </buttton>
 							</div>
 							{!!Form::close()!!}
 
@@ -64,10 +65,12 @@
 			              -->
 			              
 			            </div>
+			            <!--
 			            <div class="card-action">
 			              <a href="#">Reset password</a>
 			              <a href="#" id="btnIngresar">Ingresar</a>
 			            </div>
+			            -->
 			        </div>
 				</div>
 			</div>
@@ -84,6 +87,11 @@
 
 			
 		})
+		@if(session()->has('message.color'))
+		    var $toastContent = $('<span>{!! session('message.content') !!}</span>');
+  			Materialize.toast($toastContent, 3000, '{{ session('message.color') }}');
+		@endif
+		
 	</script>
 </body>
 </html>

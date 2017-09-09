@@ -17,8 +17,9 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //LIMIT (10)
-        // $productos = \yepagu\producto::All()->take(10);
+       if (!session()->has('id')) {
+            return Redirect::To('admin/login');
+        }
 
         //PAGINADO
         $categorias = Category::all();

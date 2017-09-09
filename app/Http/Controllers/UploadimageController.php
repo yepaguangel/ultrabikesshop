@@ -9,6 +9,9 @@ use Redirect;
 class UploadimageController extends Controller
 {
     public function index(){
+        if (!session()->has('id')) {
+            return Redirect::To('admin/login');
+        }
         $galimagenes = Galleryimg::paginate(20);
     	return view('admin.galeriaimg', compact('galimagenes'));
     }

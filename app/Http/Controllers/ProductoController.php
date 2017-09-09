@@ -18,10 +18,9 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        //LIMIT (10)
-        // $productos = \yepagu\producto::All()->take(10);
-
-        //PAGINADO
+        if (!session()->has('id')) {
+            return Redirect::To('admin/login');
+        }
         $productos = Producto::paginate(10);
         Return view('admin.producto', compact('productos'));
     }
@@ -122,11 +121,14 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        //
+         $producto = Producto::find($id);
+         $producto->delete();
+         return Redirect::to('/admin/producto');
     }
 
     public function filtro($idcategoria){
         $productos = Producto::where('idcategoria',$idcategoria)->limit(10)->get();
         return view('admin.productofiltro', compact('productos'));
+
     }
 }
