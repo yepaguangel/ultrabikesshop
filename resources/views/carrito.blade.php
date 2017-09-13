@@ -23,6 +23,9 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {{ var_dump($carrito) }}
+                    @foreach($carrito as $item)
+                        {{ $prod = getProduct($item->id) }}
                     <tr>
                         <td><a href="#" class="btn btn-flat btn-floating waves-effect waves-ligth"><i class="material-icons black-text">close</i></a></td>
                         <td><img src="img/bomba-amarilla.jpg" style="width: 60px" alt=""></td>
@@ -31,6 +34,8 @@
                         <td class="center">3</td>
                         <td>$471,000</td>
                     </tr>
+                    @endforeach
+                    <!--
                     <tr>
                         <td><a href="#" class="btn btn-flat btn-floating waves-effect waves-ligth"><i class="material-icons black-text">close</i></a></td>
                         <td><img src="img/bomba-amarilla.jpg" style="width: 60px" alt=""></td>
@@ -80,13 +85,23 @@
                             <p style="margin:0 0">
                                 <label>Sub Total</label>
                             </p>
-                            <h6 style="margin:0 0">$393,000</h6></td>
+                            <h6 style="margin:0 0">$393,000</h6>
+                        </td>
                         <td>
                             <p style="margin:0 0">
                                 <label>TOTAL</label>
                             </p>
-                            <h5 style="margin:0 0">$393,000</h5></td>
+                            <h5 style="margin:0 0">$393,000</h5>
+                        </td>
                     </tr>
+                    -->
+                    @if(count($carrito) === 0)
+                    <tr><td colspan="6" align="center">
+                    {{ Html::image('img/empty_cart.png') }}
+                    <br>
+                    No se ha agregado ningun producto
+                    </td></tr>
+                    @endif
                 </tbody>
             </table>
             <div class="col s12 space">

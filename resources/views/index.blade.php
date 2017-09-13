@@ -218,10 +218,9 @@
                                     </a>
                             <ul>
                                 <li>
-                                {{ link_to('detalleproducto/'.$prodind->id, $title = 'Ver Detalle', $attributes = ['class'=>'btn-floating red tooltipped', 'data-position'=>'left', 'data-delay'=>'50', 'data-tooltip'=>'Añadir al carrito']) }}
-                                <a class="btn-floating red tooltipped" ><i class="material-icons">shopping_cart</i></a>
+                                    {{ link_to('detalleproducto/'.$prodind->id.'/'.str_slug($prodind->nombre, '-'), $title = 'Ver Detalle', $attributes = ['class'=>'btn-floating red tooltipped', 'data-position'=>'left', 'data-delay'=>'50', 'data-tooltip'=>'Añadir al carrito']) }}
+                                    <a class="btn-floating red tooltipped" ><i class="material-icons">shopping_cart</i></a>
                                 </li>
-                                <li><a class="btn-floating orange darken-1 tooltipped" data-position="left" data-delay="50" data-tooltip="Ver Descripción"><i class="material-icons">info</i></a></li>
                             </ul>
                         </div>
                     </div>

@@ -37,7 +37,7 @@ Route::resource('admin/categoria', 'CategoriaController');
 
 //Route::get('/', function(){ return view('oops'); });
 Route::get('/', function(){ return view('oops'); });
-Route::get('/indexreal', 'FrontController@index');
+Route::get('indexreal', 'FrontController@index');
 Route::get('detalleproducto/{id}/{nombre}','FrontController@detalleproducto');
 Route::get('ofertas','FrontController@ofertas');
 Route::get('indexdemo','FrontController@indexdemo');
@@ -45,11 +45,10 @@ Route::get('conocenos','FrontController@conocenos');
 Route::get('contactenos','FrontController@contactenos');
 Route::get('micuenta','FrontController@micuenta');
 Route::get('login','FrontController@login');
-Route::get('carrito','FrontController@carrito');
 Route::get('registro','FrontController@registro');
-
-Route::get('carritoagregar/{id}', 'CarritoController@agregar');
  	
 Route::get('logerrors', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
-Route::get('/indexreal', 'FrontController@index');
+Route::get('carrito', 'CartController@show');
+Route::get('carrito/add/{id}/{cant}', 'CartController@add');
+Route::get('carrito/delete', 'CartController@destroy');

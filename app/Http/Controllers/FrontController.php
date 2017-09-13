@@ -3,8 +3,9 @@
 namespace yepagu\Http\Controllers;
 
 use Illuminate\Http\Request;
-use yepagu\producto;
-use yepagu\category;
+use yepagu\Producto;
+use yepagu\Category;
+use yepagu\Galleryimg;
 
 class FrontController extends Controller
 {
@@ -17,12 +18,14 @@ class FrontController extends Controller
         $productos = Producto::inRandomOrder()->limit(8)->get();
         $masvendidos = Producto::inRandomOrder()->limit(8)->get();
         $categoriaLimit = Category::limit(6)->get();
+        print_r($productos);
         return view('index', compact('productos','masvendidos', 'categoriaLimit')); 
     }
 
     public function detalleproducto($id){ 
         $producto = producto::find($id);
-        return view('detalleproducto',['producto'=>$producto]); 
+        $imagenesProd = Galleryimg::whereIn('id', explode(',', $producto->imagen) )->get();
+        return view('detalleproducto',compact('producto','imagenesProd')); 
     }
     
     public function indexdemo()

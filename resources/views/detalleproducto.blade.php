@@ -1,7 +1,7 @@
 @extends('layouts.principal')
 
 @section('titulo')
-    Ultrabikes Shop - Detalle producto
+    Ultrabikes Shop - {{$producto->nombre}}
 @stop
 
 @section('head')
@@ -27,25 +27,18 @@
     <div class="container">
         <div class="col s12 m6 contentcarru">
             <div id="carousel02" class="owl-carousel" data-slider-id="1">
-                <div><img src="img/saguaro-300x300.png" alt="Llanta vitoria saguaro"></div>
-                <div><img src="img/tmmb-2-300x300.jpg" alt="Llanta vitoria saguaro"></div>
-                <div><img src="img/saguaro-300x300.png" alt="Llanta vitoria saguaro"></div>
-                <div><img src="img/tmmb-2-300x300.jpg" alt="Llanta vitoria saguaro"></div>
-                <div><img src="img/saguaro-300x300.png" alt="Llanta vitoria saguaro"></div>
-                <div><img src="img/tmmb-2-300x300.jpg" alt="Llanta vitoria saguaro"></div>
-                <div><img src="img/saguaro-300x300.png" alt="Llanta vitoria saguaro"></div>
-                <div><img src="img/tmmb-2-300x300.jpg" alt="Llanta vitoria saguaro"></div>
+                @foreach($imagenesProd as $imggal)
+                <div>
+                {{ Html::image('filegallery/'.$imggal->claveimg.'.'.$imggal->extension, $imggal->descrip) }}
+                </div>
+                @endforeach
             </div>
             <div class="col s12 carruselitem animated" style="padding: 0 0">
                 <div class="carousel owl-thumbs" data-slider-id="1" style="height: 120px">
-                    <button class="owl-thumb-item carousel-item" style="width: 120px;height: 120px;padding:0 0;overflow:hidden"><img class="responsive-img" src="img/saguaro-300x300.png" alt="Llanta vitoria saguaro"></button>
-                    <button class="owl-thumb-item carousel-item" style="width: 120px;height: 120px;padding:0 0;overflow:hidden"><img class="responsive-img" src="img/tmmb-2-300x300.jpg" alt="Llanta vitoria saguaro"></button>
-                    <button class="owl-thumb-item carousel-item" style="width: 120px;height: 120px;padding:0 0;overflow:hidden"><img class="responsive-img" src="img/saguaro-300x300.png" alt="Llanta vitoria saguaro"></button>
-                    <button class="owl-thumb-item carousel-item" style="width: 120px;height: 120px;padding:0 0;overflow:hidden"><img class="responsive-img" src="img/tmmb-2-300x300.jpg" alt="Llanta vitoria saguaro"></button>
-                    <button class="owl-thumb-item carousel-item" style="width: 120px;height: 120px;padding:0 0;overflow:hidden"><img class="responsive-img" src="img/saguaro-300x300.png" alt="Llanta vitoria saguaro"></button>
-                    <button class="owl-thumb-item carousel-item" style="width: 120px;height: 120px;padding:0 0;overflow:hidden"><img class="responsive-img" src="img/tmmb-2-300x300.jpg" alt="Llanta vitoria saguaro"></button>
-                    <button class="owl-thumb-item carousel-item" style="width: 120px;height: 120px;padding:0 0;overflow:hidden"><img class="responsive-img" src="img/saguaro-300x300.png" alt="Llanta vitoria saguaro"></button>
-                    <button class="owl-thumb-item carousel-item" style="width: 120px;height: 120px;padding:0 0;overflow:hidden"><img class="responsive-img" src="img/tmmb-2-300x300.jpg" alt="Llanta vitoria saguaro"></button>
+                    @foreach($imagenesProd as $imggal)
+                    <button class="owl-thumb-item carousel-item" style="width: 120px;height: 120px;padding:0 0;overflow:hidden">
+                    {{ Html::image('filegallery/'.$imggal->claveimg.'.'.$imggal->extension, $imggal->descrip) }}
+                    @endforeach
                 </div>
             </div>
         </div>

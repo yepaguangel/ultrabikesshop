@@ -66,7 +66,7 @@
 		<a class="waves-effect waves-light btn" onClick="expandAll();"><i class="material-icons left">fullscreen</i>Expand All</a>
 			<a class="waves-effect waves-light btn" onClick="collapseAll();"><i class="material-icons left">fullscreen_exit</i>Collapse All</a>
 		<div class="card">                		
-    		 <ul class="collapsible" data-collapsible="expandable">
+    		 <ul class="collapsible" data-collapsible="accordion">
 			    <li>
 			      <div class="collapsible-header"><i class="material-icons">bookmark</i>Referencia</div>
 			      <div class="collapsible-body">
@@ -164,7 +164,7 @@
 			      <div class="collapsible-body">
 			      	<div class="input-field">
 			      		{!!Form::label('Descripcion del Producto')!!}
-						{!!Form::text('descripcion',null,array('required' => 'required'))!!}
+						{!!Form::textarea('descripcion',null,array('class'=>'form-control', 'rows' => 10, 'cols' => 40, 'required' => 'required'))!!}
 			      	</div>
 			      </div>
 			    </li>
@@ -182,7 +182,7 @@
 			      <div class="collapsible-body">
 			      	<div class="input-field">
 			      		{!!Form::label('Palabras claves (separe por comas)')!!}
-						{!!Form::text('anotaciones',null)!!}
+						{!!Form::textarea('anotaciones',null, array('class'=>'form-control', 'rows' => 10, 'cols' => 40)) !!}
 			      	</div>
 			      </div>
 			    </li>
@@ -195,18 +195,7 @@
 			      	</div>
 			      </div>
 			    </li>
-			    <li>
-			      <div class="collapsible-header"><i class="material-icons">comment</i>Categoria</div>
-			      <div class="collapsible-body">
-			      	<div class="input-field">
-						<select name="idcategoria">
-							@foreach($categorias as $categoria)
-							<option value="{{ $categoria->id }}" {{ $categoria->id == $producto->idcategoria ? 'selected="selected"' : '' }}>{{strtoupper($categoria->nombrecategoria)}}</option>
-			    			@endforeach
-						</select>
-			      	</div>
-			      </div>
-			    </li>
+			   
 			    <li>
 			    	<div class="collapsible-header"><i class="material-icons">card_membership</i>Flete</div>
 			      	<div class="collapsible-body">
@@ -215,7 +204,9 @@
 					    </div>
 				    </div>
 			    </li>
+
 			 </ul>
+			  {{ Form::hidden('idcategoria', null, array('id'=>'idcategoria')) }}
         </div>
 	</div>
 
@@ -225,11 +216,21 @@
 			<p>Filtra este producto por categorías o crea una propia categoría</p>
 		</blockquote>
 		<div class="card">
-    		<div class="collection" style="max-height: 380px;overflow-y: auto">
+
+		    <ul class="collection" style="max-height: 380px;overflow-y: auto">
     			@foreach($categorias as $categoria)
-    				<a href="javascript:void(0)" class="collection-item">{{strtoupper($categoria->nombrecategoria)}}</a>
+    			<li class="collection-item">
+
+    				@if (verArray($categoria, $producto->idcategoria))
+    				 	<input type="checkbox" checked="checked" id="test{{$categoria->id}}" class="options" value="{{$categoria->id}}" onclick="agregarCateg('{{ $categoria->id}}')" />
+    				@else
+    					<input type="checkbox" id="test{{$categoria->id}}" class="options" value="{{$categoria->id}}" onclick="agregarCateg('{{ $categoria->id}}')" />
+    				@endif
+			      
+			      	<label for="test{{$categoria->id}}">{{strtoupper($categoria->nombrecategoria)}}</label>
+			</li>
     			@endforeach
-		    </div>
+		    </ul>
 		    <div class="card-action">
 		    	
 		    	{{ link_to('admin/category/create', $title = 'Nueva Categoria', $attributes = ['class'=>'newbtncategory']) }}
@@ -243,8 +244,10 @@
 	listarMedida();
 
 	function agregarCateg(num){
-		var x = document.getElementsByName("idcategoria")[0];
-		x.value=num;
+		var values = $('input:checkbox:checked.options').map(function () {
+		  return this.value;
+		}).get();
+		$('#idcategoria').val(values);
     }
 
 	$(document).ready(function($) {
